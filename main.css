@@ -58,9 +58,13 @@ body{
     background-color: red;
     color: white;
     cursor: pointer;
-    transition: opacity 150ms ease-in-out;
-    opacity: 0.85;
- }
+}
+
+.boton_ingresar:hover{
+    background-color: lightgray;
+    color: black
+}
+
 /* Escritorio */
 @media screen and (min-width: 768px){
     .nav{

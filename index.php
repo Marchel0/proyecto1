@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="nav">
-        <div class="nav-brand"><img src="/Imagenes/ucsc.png" alt=""></div>
+        <div class="nav-brand"><img src="Imagenes/ucsc.png" alt=""></div>
         <ol class="nav-links">    
             <form action="comprobador.php" method="POST">
                 <li><input type="text" placeholder= "Usuario" class="cuenta"></li>
