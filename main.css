@@ -2,3 +2,69 @@
     margin: 0;
     padding: 0;
 }
+/* Dispositivos moviles */
+.nav{
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 210px;
+    background-color:white;
+    color: black; 
+  }
+  
+  .nav-brand{
+      display: inline-block;
+      position: relative;
+      padding: 5px;
+      padding-bottom: 20px;
+  }
+  
+  .nav-brand img{
+      width: 200px;
+  }
+  
+  .nav-links{
+      padding: 0;
+      margin-top: 0;
+      margin-left: 20px;
+      list-style-type: none;
+  }
+  
+  .nav-links li{
+      cursor: pointer;
+      opacity: 0.85;
+      transition: opacity 150ms ease-in-out;
+      padding-top: 15px;
+  }
+  
+  .nav-links li:hover{
+      opacity: 1;
+  }
+/* Escritorio */
+  @media screen and (min-width: 768px){
+    .nav{
+        top: 0;
+        height: 80px;
+        width: 100%;
+    }
+
+    .nav-brand{
+        display: inline-block;
+        position: relative;
+        padding: 5px;
+        padding-bottom: 0;
+    }
+
+    .nav-links{
+        position: absolute;
+        padding: 0;
+        top: 30px;
+        right: 0;
+    }
+
+    .nav-links li{
+        display: inline-block;
+        margin-right: 10px;
+        padding: 0;
+    }
+}
