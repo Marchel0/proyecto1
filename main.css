@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
 }
+
+body{
+    background-color: lightgray;
+}
 /* Dispositivos moviles */
 .nav{
     position: fixed;
@@ -12,36 +16,48 @@
     color: black; 
   }
   
-  .nav-brand{
-      display: inline-block;
-      position: relative;
-      padding: 5px;
-      padding-bottom: 20px;
-  }
+.nav-brand{
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+    padding-bottom: 20px;
+}
   
-  .nav-brand img{
-      width: 200px;
-  }
+.nav-brand img{
+    width: 200px;
+}
   
-  .nav-links{
-      padding: 0;
-      margin-top: 0;
-      margin-left: 20px;
-      list-style-type: none;
-  }
+.nav-links{
+    padding: 0;
+    margin-top: 0;
+    margin-left: 20px;
+    list-style-type: none;
+}
   
-  .nav-links li{
-      cursor: pointer;
-      opacity: 0.85;
-      transition: opacity 150ms ease-in-out;
-      padding-top: 15px;
-  }
+.nav-links li{
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 150ms ease-in-out;
+    padding-top: 15px;
+}
   
-  .nav-links li:hover{
-      opacity: 1;
-  }
+.nav-links li:hover{
+    opacity: 1;
+}
+
+.cuenta{
+    height: 20px;
+    width: 100px;
+}
+ 
+.boton_ingresar{
+    height: 20px;
+    width: 80px;
+    border-radius: 20px;
+    border: 0;
+ }
 /* Escritorio */
-  @media screen and (min-width: 768px){
+@media screen and (min-width: 768px){
     .nav{
         top: 0;
         height: 80px;
