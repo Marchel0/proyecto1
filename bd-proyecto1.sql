@@ -41,7 +41,7 @@ CREATE TABLE `cuenta` (
 
 CREATE TABLE `edificio` (
   `id_edificio` int(11) NOT NULL,
-  `nombre` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombre_edificio` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `aforo_total` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
