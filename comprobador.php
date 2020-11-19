@@ -9,7 +9,7 @@
     }
 
     if(!empty($response)){
-        header("Location: ingresado.php?id_cuenta=$response");
+        header("Location: mantenedor.php?id_cuenta=$response");
     }else{
         header("Location: noexiste.php");
     }
