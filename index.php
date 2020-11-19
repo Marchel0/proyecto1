@@ -14,8 +14,8 @@
         <div class="nav-brand"><img src="Imagenes/ucsc.png" alt=""></div>
         <ol class="nav-links">    
             <form action="comprobador.php" method="POST">
-                <li><input type="text" placeholder= "Usuario" class="cuenta"></li>
-                <li><input type="password" placeholder= "Contraseña" class="cuenta"></li> 
+                <li><input type="text" placeholder= "Usuario" class="cuenta" name="rut"></li>
+                <li><input type="password" placeholder= "Contraseña" class="cuenta" name="clave"></li> 
                 <li><button type="submit" class="boton_ingresar">Ingresar</button></li>
             </form>
         </ol>
