@@ -43,8 +43,17 @@
                     <th>Opciones</th>
                 </tr>
             </tfoot>
-    </table>
+            </table>
         </div>
+        <div>
+        <h3>Añadir Edificio</h3>
+        <form action="">
+            <input type="text" name="nombre-edificio">
+            <input type="text" name="aforo-total">
+            <button type="submit">Agregar</button>
+        </form>
+        </div>
+        
     </div>
     <script type="text/javascript" src="funciones.js"></script>
 </body>
