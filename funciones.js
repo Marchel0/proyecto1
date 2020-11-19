@@ -1,5 +1,7 @@
 $(document).ready( function () {
     $('#example').DataTable();
+
+
     listarEdificios();
     function listarEdificios(){
         $.ajax({
@@ -22,16 +24,22 @@ $(document).ready( function () {
                             ${edificios.aforo_total}
                         </td>
                         <td>
+                        <form action='eliminar.php' method='POST'>
+                            <input type="hidden" value=${edificios.id_edificio}>
                             <button class="btn">
                                 <span class="material-icons">
                                     delete
                                 </span> 
                             </button>
+                            </form>
+                            <form action='eliminar.php' method='POST'>
+                            <input type="hidden" value=${edificios.id_edificio}>
                             <button class="btn">
                                 <span class="material-icons">
                                     edit
-                                </span>
+                                </span> 
                             </button>
+                            </form>
                         </td>
                     </tr>
                     `
