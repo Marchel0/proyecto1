@@ -48,8 +48,8 @@
         <div>
         <h3>Añadir Edificio</h3>
         <form action="">
-            <input type="text" name="nombre-edificio">
-            <input type="text" name="aforo-total">
+            <input type="text" name="nombre-edificio" placeholder="Nombre Edificio">
+            <input type="text" name="aforo-total" placeholder="Aforo Edificio">
             <button type="submit">Agregar</button>
         </form>
         </div>

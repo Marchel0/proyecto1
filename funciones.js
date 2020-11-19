@@ -25,15 +25,16 @@ $(document).ready( function () {
                         </td>
                         <td>
                         <form action='eliminar.php' method='POST'>
-                            <input type="hidden" value=${edificios.id_edificio}>
+                            <input type="hidden" name="id_edificio" value=${edificios.id_edificio}>
                             <button class="btn">
                                 <span class="material-icons">
                                     delete
                                 </span> 
                             </button>
                             </form>
-                            <form action='eliminar.php' method='POST'>
-                            <input type="hidden" value=${edificios.id_edificio}>
+
+                            <form action='editar.php' method='POST'>
+                            <input type="hidden" name="id_edificio" value=${edificios.id_edificio}>
                             <button class="btn">
                                 <span class="material-icons">
                                     edit
