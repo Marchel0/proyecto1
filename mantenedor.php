@@ -47,9 +47,9 @@
         </div>
         <div>
         <h3>Añadir Edificio</h3>
-        <form action="">
-            <input type="text" name="nombre-edificio" placeholder="Nombre Edificio">
-            <input type="text" name="aforo-total" placeholder="Aforo Edificio">
+        <form action="agregar.php" method="POST">
+            <input type="text" placeholder="Nombre Edificio" name="nombre_edificio">
+            <input type="text" placeholder="Aforo Edificio" name="aforo_total">
             <button type="submit">Agregar</button>
         </form>
         </div>
