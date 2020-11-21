@@ -24,46 +24,38 @@
         </ol>
     </nav>  
     <div class="contenedor">
-        <div class="tabla-datos">
-            <table id="example" class="display" >
-            <thead>
-                <tr>
-                    <th>Nombre Edificio</th>
-                    <th>Aforo Total</th>
-                </tr>
-            </thead>
-            <tbody id="lista-datos">
+
+            <table style="width: 20%" >
+                <thead>
+                    <tr>
+                        <th>Nombre Edificio</th>
+                        <th>Aforo</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <?php
                         $consulta = "SELECT nombre_edificio, aforo_total FROM edificio WHERE id_edificio=$id ";
                         $resultado = mysqli_query($conexion,$consulta);
                         while($row=mysqli_fetch_assoc($resultado)){
                         $nombre=$row['nombre_edificio'];
                         $aforo=$row['aforo_total'];
-                            echo"<thead>";
-                            echo "<tr>".$nombre."</tr>";
-                            echo "<tr>".$aforo. "</tr>";
-                            echo"</thead>";
+                            echo "<tr>";
+                            echo "<td>".$nombre."</td>";
+                            echo "<td>".$aforo. "</td>";
+                            echo "</tr>";
                         }
                     ?>
-            </tbody>
-            <tfoot>
+                </tbody>
                 <tr>
-                    <form action='edicion.php'   method='POST'>
-                        <?php  
-                            echo "<input type='hidden' name='id_edificio' value=$id>" 
-                        
-                        ?>
-                        
-                        <input type="text" name="nombre_edificio">
-                        <input type="text" name="aforo_total">
-                        <button type="submit">Confirmar</button>
-                    </form>
+                <form action='edicion.php'   method='POST'>
+                    <?php  
+                        echo "<input type='hidden' name='id_edificio' value=$id>" 
+                    ?>
+                    <td><input type="text" name="nombre_edificio" placeholder = "Nombre Edificio"></td>
+                    <td><input type="text" name="aforo_total" placeholder = "Aforo"></td>
+                    <td><button class="boton_ingresar" type="submit">Guardar</button><td>
+                </form>
                 </tr>
-            </tfoot>
             </table>
-        </div>
-        </div>
-        
     </div>
-</body>
 </html>
