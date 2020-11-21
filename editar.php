@@ -24,7 +24,7 @@
         </ol>
     </nav>  
     <div class="contenedor">
-
+        <div class="editor">     
             <table style="width: 20%" >
                 <thead>
                     <tr>
@@ -32,6 +32,12 @@
                         <th>Aforo</th>
                     </tr>
                 </thead>
+                        <th>
+                        <hr style="width : 200px; margin-left:10px">
+                        </th>
+                        <th>
+                        <hr style="width : 200px; margin-left:10px">
+                        </th>
                 <tbody>
                     <?php
                         $consulta = "SELECT nombre_edificio, aforo_total FROM edificio WHERE id_edificio=$id ";
@@ -57,5 +63,6 @@
                 </form>
                 </tr>
             </table>
+        </div>
     </div>
 </html>

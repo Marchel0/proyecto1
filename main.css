@@ -46,6 +46,16 @@ body{
 .nav-links li:hover{
     opacity: 1;
 }
+.editor{
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px black;
+    margin-left: 30%;
+    margin-top: 3%;
+    padding-left: 5%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
 /* index */
 .cuenta{
     height: 20px;
