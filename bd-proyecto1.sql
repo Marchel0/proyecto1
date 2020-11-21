@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2020 a las 23:30:41
+-- Tiempo de generación: 21-11-2020 a las 19:18:50
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -30,8 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `cuenta` (
   `id_cuenta` int(11) NOT NULL,
   `rut` int(9) NOT NULL,
-  `clave` varchar(30) NOT NULL
+  `clave` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipo_cuenta` enum('administrativa','docente','alumno','mantenedor') COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `cuenta`
+--
+
+INSERT INTO `cuenta` (`id_cuenta`, `rut`, `clave`, `tipo_cuenta`) VALUES
+(1, 556667778, '1234', 'alumno'),
+(2, 112223334, '1234', 'mantenedor');
 
 -- --------------------------------------------------------
 
@@ -44,6 +53,14 @@ CREATE TABLE `edificio` (
   `nombre_edificio` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `aforo_total` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `edificio`
+--
+
+INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`) VALUES
+(3, 'Agustin', 2000),
+(5, 'Central', 1000);
 
 -- --------------------------------------------------------
 
@@ -66,8 +83,17 @@ CREATE TABLE `permanecer` (
 
 CREATE TABLE `persona` (
   `rut` int(9) NOT NULL,
-  `nombre` varchar(30) COLLATE utf8_spanish2_ci NOT NULL
+  `nombre` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipo_rol` enum('auxiliar de aseo','mantención','seguridad','administrativos','docente','alumno','invitado') COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`rut`, `nombre`, `tipo_rol`) VALUES
+(112223334, 'Juan Perez', 'mantención'),
+(556667778, 'Felipe Rodriguez', 'alumno');
 
 --
 -- Índices para tablas volcadas
@@ -107,13 +133,13 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-  MODIFY `id_cuenta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
