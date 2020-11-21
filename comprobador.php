@@ -10,5 +10,7 @@
 
     if(!empty($response)){
         header("Location: mantenedor.php?id_cuenta=$response");
+    }else{
+        header("Location: index.php");
     }
     ?>
