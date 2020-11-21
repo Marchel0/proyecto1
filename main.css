@@ -76,11 +76,6 @@ body{
     background-color: lightgray;
     color: black
 }
-
-#error {
-    visibility: hidden;
-    color: rgb(238, 69, 69);
-}
 /* Escritorio */
 @media screen and (min-width: 768px){
     /* Barra navegacion */
