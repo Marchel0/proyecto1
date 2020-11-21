@@ -30,8 +30,12 @@ $(document).ready( function () {
                         </td>
                         <td class="tabla-opciones">
                         <form action='eliminar.php' method='POST'>
-                            <input type="hidden" name="id_edificio" value=${edificios.id_edificio}>
-                            <button class="btn">
+                            <input type="hidden"  name="id_edificio" value=${edificios.id_edificio}>
+                            <button class="btn" onclick="if(confirm('¿Está seguro que desea eliminar este edificio de los registros')){
+                                this.form.submit();
+                                alert('Registro del edificio eliminado con éxito');}
+                                else{ alert('Operacion Cancelada');
+                                }" value="ELIMINAR DATOS">
                                 <span class="material-icons">
                                     delete
                                 </span> 
@@ -56,4 +60,6 @@ $(document).ready( function () {
             }
         });
     } 
+    
+
 });

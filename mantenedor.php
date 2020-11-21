@@ -59,8 +59,16 @@
             <input type="text" placeholder="Nombre Edificio" name="nombre_edificio">
             <br>
             <input type="text" placeholder="Aforo Edificio" name="aforo_total">
+<<<<<<< Updated upstream
             <br>
             <button class="boton_ingresar" type="submit">Agregar</button>
+=======
+            <button type="submit" onclick="if(confirm('¿Está seguro que desea añadir este edificio?')){
+            this.form.submit();
+            alert('Edificio registrado con éxito');}
+            else{ alert('Operacion Cancelada');
+            }">Agregar</button>
+>>>>>>> Stashed changes
         </form>
         </div>
         
