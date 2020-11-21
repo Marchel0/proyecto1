@@ -16,6 +16,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
+<script type="text/javascript">
+    
+</script>
+
+
 <body>
     <nav class="nav">
         <div class="nav-brand"><img src="Imagenes/ucsc.png" alt=""></div>
@@ -60,11 +65,7 @@
             <br>
             <input type="text" placeholder="Aforo Edificio" name="aforo_total">
             <br>
-            <button class="boton_ingresar" type="submit" onclick="if(confirm('¿Está seguro que desea añadir este edificio?')){
-            this.form.submit();
-            alert('Edificio registrado con éxito');}
-            else{ alert('Operacion Cancelada');
-            }">Agregar</button>
+            <button class="boton_ingresar" type="submit" onclick="return confirmarE()">Agregar</button>
         </form>
         </div>
         
