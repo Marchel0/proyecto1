@@ -8,6 +8,7 @@ body{
     background-color: lightgray;
 }
 /* Dispositivos moviles */
+/* Barra navegacion */
 .nav{
     position: fixed;
     left: 0;
@@ -45,11 +46,11 @@ body{
 .nav-links li:hover{
     opacity: 1;
 }
-
+/* index */
 .cuenta{
     height: 20px;
     width: 100px;
-}
+}       
  
 .boton_ingresar{
     height: 20px;
@@ -66,8 +67,13 @@ body{
     color: black
 }
 
+#error {
+    visibility: hidden;
+    color: rgb(238, 69, 69);
+}
 /* Escritorio */
 @media screen and (min-width: 768px){
+    /* Barra navegacion */
     .nav{
         top: 0;
         height: 80px;
@@ -93,13 +99,13 @@ body{
         margin-right: 10px;
         padding: 0;
     }
-
+    /* Contenedor general */
     .contenedor{
         margin-top: 100px;
         width: 100%;
         display: inline-flex;
     }
-
+    /* Tabla de datos */
     .tabla-opciones form{
         display: inline-block;
     }
