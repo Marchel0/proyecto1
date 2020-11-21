@@ -13,6 +13,8 @@
     <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <nav class="nav">
@@ -23,6 +25,12 @@
         </ol>
     </nav>  
     <div class="contenedor">
+        <div class="aforo-permitido">
+            
+        </div>
+        <div class="grafico">
+
+        </div>
         <div class="tabla-datos">
             <table id="example" class="display" >
             <thead>
@@ -45,12 +53,14 @@
             </tfoot>
             </table>
         </div>
-        <div>
+        <div class="añadir-edificio">
         <h3>Añadir Edificio</h3>
         <form action="agregar.php" method="POST">
             <input type="text" placeholder="Nombre Edificio" name="nombre_edificio">
+            <br>
             <input type="text" placeholder="Aforo Edificio" name="aforo_total">
-            <button type="submit">Agregar</button>
+            <br>
+            <button class="boton_ingresar" type="submit">Agregar</button>
         </form>
         </div>
         

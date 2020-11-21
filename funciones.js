@@ -28,7 +28,7 @@ $(document).ready( function () {
                         <td> 
                             ${edificios.aforo_total}
                         </td>
-                        <td>
+                        <td class="tabla-opciones">
                         <form action='eliminar.php' method='POST'>
                             <input type="hidden" name="id_edificio" value=${edificios.id_edificio}>
                             <button class="btn">
