@@ -53,7 +53,7 @@
                     ?>
                     <td><input type="text" name="nombre_edificio" placeholder = "Nombre Edificio"></td>
                     <td><input type="text" name="aforo_total" placeholder = "Aforo"></td>
-                    <td><button type="submit">Guardar</button><td>
+                    <td><button class="boton_ingresar" type="submit">Guardar</button><td>
                 </form>
                 </tr>
             </table>
