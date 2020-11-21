@@ -27,14 +27,8 @@
         </ol>
     </nav>
     <div class="contenedor">
-        <div class="aforo-permitido">
-            
-        </div>
-        <div class="grafico">
-
-        </div>
         <div class="tabla-datos">
-            <table id="example" class="display" >
+            <table id="tabla" class="display" >
             <thead>
                 <tr>
                     <th>Nombre Edificio</th>

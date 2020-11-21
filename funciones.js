@@ -1,11 +1,17 @@
 $(document).ready( function () {
-    $('#example').DataTable({
+    $('#tabla-datos-mantenedor').DataTable({
         searching :false,
         ordering: false,
         info : false,
         paging : false
     });
 
+    $('#tabla').DataTable({
+        searching :false,
+        ordering: false,
+        info : false,
+        paging : false
+    });
 
     listarEdificiosMantenedor();
     function listarEdificiosMantenedor(){
@@ -55,65 +61,64 @@ $(document).ready( function () {
                 
             }
         });
+    
+    listarEdificios();
+    function listarEdificios(){
+    $.ajax({
+        url: "lista-edificios.php",
+        type: "GET",
+        success: function (response) {
+            let edificios = JSON.parse(response);
+            let template = '';
 
-        listarEdificios();
-        function listarEdificios(){
-        $.ajax({
-            url: "lista-edificios.php",
-            type: "GET",
-            success: function (response) {
-                let edificios = JSON.parse(response);
-                let template = '';
-    
-                edificios.forEach(edificios => {
-                    template += 
-                    `<tr>
-                        <td> 
-                            ${edificios.nombre_edificio}
-                        </td>
-                        <td> 
-                            ${edificios.aforo_actual}
-                        </td>
-                        <td> 
-                            ${edificios.aforo_total}
-                        </td>
-                    </tr>
-                    `
-                });
-    
-                $('#lista-datos').html(template);
-                
-            }
-        });
-    } 
+            edificios.forEach(edificios => {
+                template += 
+                `<tr>
+                    <td> 
+                        ${edificios.nombre_edificio}
+                    </td>
+                    <td> 
+                        ${edificios.aforo_actual}
+                    </td>
+                    <td> 
+                        ${edificios.aforo_total}
+                    </td>
+                </tr>
+                `
+            });
 
-    informacionUsuario();
-    function informacionUsuario(){
-        const valores = window.location.search;
-        const urlParams = new URLSearchParams(valores);
-        var id_cuenta = urlParams.get('id_cuenta');
-        $.ajax({
-            url: "informacion_cuenta.php",
-            data: {id_cuenta},
-            type: "POST",
-            success: function(response){
-                let datosCuenta = JSON.parse(response);
-                let template2 = '';
-    
-                datosCuenta.forEach(datosCuenta => {
-                    template2 += 
-                    `<li>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</li>`
+            $('#lista-datos').html(template);
+            
+        }
+    });
+}
 
-                });
-    
-                $('#nav-info').html(template2);
-                
-            }
-        });
-    }
-    
+informacionUsuario();
+function informacionUsuario(){
+    let valores = window.location.search;
+    let urlParams = new URLSearchParams(valores);
+    var id_cuenta = urlParams.get('id_cuenta');
+    $.ajax({
+        url: "informacion_cuenta.php",
+        data: {id_cuenta},
+        type: "POST",
+        success: function(response){
+            let datosCuenta = JSON.parse(response);
+            let template2 = '';
 
-});
+            datosCuenta.forEach(datosCuenta => {
+                template2 += 
+                `<li>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</li>`
+
+            });
+
+            $('#nav-info').html(template2);
+            
+        }
+    });
+}
+
+}});
 
 function confirmarE(){
     var respuesta = confirm('¿Está seguro que desea añadir este edificio?');

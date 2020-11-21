@@ -31,7 +31,7 @@
 
         </div>
         <div class="tabla-datos">
-            <table id="example" class="display" >
+            <table id="tabla-datos-mantenedor" class="display" >
             <thead>
                 <tr>
                     <th>Nombre Edificio</th>
@@ -40,7 +40,7 @@
                     <th>Opciones</th>
                 </tr>
             </thead>
-            <tbody id="lista-datos">
+            <tbody id="lista-datos-mantenedor">
             </tbody>
             <tfoot>
                 <tr>
