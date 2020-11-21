@@ -26,6 +26,33 @@
             </form>
         </ol>
     </nav>
+    <div class="contenedor">
+        <div class="aforo-permitido">
+            
+        </div>
+        <div class="grafico">
+
+        </div>
+        <div class="tabla-datos">
+            <table id="example" class="display" >
+            <thead>
+                <tr>
+                    <th>Nombre Edificio</th>
+                    <th>Aforo Actual</th>
+                    <th>Aforo Permitido</th>
+                </tr>
+            </thead>
+            <tbody id="lista-datos">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Nombre Edificio</th>
+                    <th>Aforo Actual</th>
+                    <th>Aforo Permitido</th>
+                </tr>
+            </tfoot>
+            </table>    
+    </div>
     <script type="text/javascript" src="funciones.js"></script>  
 </body>
 </html>

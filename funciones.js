@@ -7,8 +7,8 @@ $(document).ready( function () {
     });
 
 
-    listarEdificios();
-    function listarEdificios(){
+    listarEdificiosMantenedor();
+    function listarEdificiosMantenedor(){
         $.ajax({
             url: "lista-edificios.php",
             type: "GET",
@@ -46,6 +46,36 @@ $(document).ready( function () {
                                 </span> 
                             </button>
                             </form>
+                        </td>
+                    </tr>
+                    `
+                });
+    
+                $('#lista-datos-mantenedor').html(template);
+                
+            }
+        });
+
+        listarEdificios();
+        function listarEdificios(){
+        $.ajax({
+            url: "lista-edificios.php",
+            type: "GET",
+            success: function (response) {
+                let edificios = JSON.parse(response);
+                let template = '';
+    
+                edificios.forEach(edificios => {
+                    template += 
+                    `<tr>
+                        <td> 
+                            ${edificios.nombre_edificio}
+                        </td>
+                        <td> 
+                            ${edificios.aforo_actual}
+                        </td>
+                        <td> 
+                            ${edificios.aforo_total}
                         </td>
                     </tr>
                     `
