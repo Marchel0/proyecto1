@@ -57,7 +57,30 @@ $(document).ready( function () {
         });
     } 
 
-   
+    informacionUsuario();
+    function informacionUsuario(){
+        const valores = window.location.search;
+        const urlParams = new URLSearchParams(valores);
+        var id_cuenta = urlParams.get('id_cuenta');
+        $.ajax({
+            url: "informacion_cuenta.php",
+            data: {id_cuenta},
+            type: "POST",
+            success: function(response){
+                let datosCuenta = JSON.parse(response);
+                let template2 = '';
+    
+                datosCuenta.forEach(datosCuenta => {
+                    template2 += 
+                    `<li>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</li>`
+
+                });
+    
+                $('#nav-info').html(template2);
+                
+            }
+        });
+    }
     
 
 });

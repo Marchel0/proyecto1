@@ -16,17 +16,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
-<script type="text/javascript">
-    
-</script>
-
 
 <body>
     <nav class="nav">
         <div class="nav-brand"><img src="Imagenes/ucsc.png" alt=""></div>
-        <ol class="nav-links">    
-            <form action="comprobador.php" method="POST">
-            </form>
+        <ol class="nav-links" id="nav-info">    
         </ol>
     </nav>  
     <div class="contenedor">
