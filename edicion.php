@@ -3,6 +3,7 @@
     $nombre=$_POST['nombre_edificio'];
     $aforo=$_POST['aforo_total'];
     $id=$_POST['id_edificio'];
+    $id_cuenta=$_POST['id_cuenta'];
     if($nombre!=null){
         $update =   "UPDATE edificio
         SET nombre_edificio='$nombre'
@@ -16,6 +17,6 @@
         $result = mysqli_query($conexion, $update);
     }
                 
-    header("Location: mantenedor.php");
+    header("Location: mantenedor.php?id_cuenta=$id_cuenta");
 
 ?>

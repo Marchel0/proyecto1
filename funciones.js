@@ -9,6 +9,9 @@ $(document).ready( function () {
 
     listarEdificios();
     function listarEdificios(){
+        const valores = window.location.search;
+        const urlParams = new URLSearchParams(valores);
+        var id_cuenta = urlParams.get('id_cuenta');
         $.ajax({
             url: "lista-edificios.php",
             type: "GET",
@@ -40,6 +43,7 @@ $(document).ready( function () {
 
                             <form action='editar.php' method='POST'>
                             <input type="hidden" name="id_edificio" value=${edificios.id_edificio}>
+                            <input type="hidden"  name="id_cuenta" value=${id_cuenta}>
                             <button class="btn" >
                                 <span class="material-icons">
                                     edit

@@ -1,6 +1,7 @@
 <?php
     require("conexion.php");
     $id=$_POST['id_edificio'];
+    $id_cuenta=$_POST['id_cuenta'];
 ?>
 
 <!DOCTYPE html>
@@ -55,11 +56,14 @@
                 <tr>
                 <form action='edicion.php'   method='POST'>
                     <?php  
-                        echo "<input type='hidden' name='id_edificio' value=$id>" 
+                        echo "<input type='hidden' name='id_edificio' value=$id>" ;
+                        echo "<input type='hidden' name='id_cuenta' value=$id_cuenta>"; 
                     ?>
                     <td><input type="text" name="nombre_edificio" placeholder = "Nombre Edificio"></td>
                     <td><input type="text" name="aforo_total" placeholder = "Aforo"></td>
-                    <td><button class="boton_ingresar" type="submit" onclick="return editarE()">Guardar</button><td>
+                    <?php
+                        echo "<td><button class='boton_ingresar' type='submit' onclick='return editarE()'>Guardar</button><td>"
+                    ?>
                 </form>
                 </tr>
             </table>
