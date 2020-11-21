@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
@@ -95,6 +96,16 @@ body{
 
     .contenedor{
         margin-top: 100px;
+        width: 100%;
+        display: inline-flex;
+    }
+
+    .tabla-opciones form{
+        display: inline-block;
+    }
+
+    td {
+        text-align: center;
     }
 
     .btn{
@@ -102,5 +113,19 @@ body{
         border: none;
         cursor: pointer;
         margin-right: 10px;
+    }
+
+    .tabla-datos{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .añadir-edificio{
+        width: 25%;
+    }
+
+    .añadir-edificio input{
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 }
