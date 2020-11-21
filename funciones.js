@@ -40,7 +40,7 @@ $(document).ready( function () {
 
                             <form action='editar.php' method='POST'>
                             <input type="hidden" name="id_edificio" value=${edificios.id_edificio}>
-                            <button class="btn">
+                            <button class="btn" >
                                 <span class="material-icons">
                                     edit
                                 </span> 
@@ -101,6 +101,17 @@ function eliminarE(){
 
     if(respuesta == true){
         alert("Registro del edificio eliminado con éxito");
+        return true;
+    }else{
+        alert("Operación cancelada");
+        return false;
+    }
+}
+function editarE(){
+    var respuesta = confirm('¿Está seguro que desea modificar este edificio?');
+
+    if(respuesta == true){
+        alert("Cambios guardados");
         return true;
     }else{
         alert("Operación cancelada");
