@@ -53,18 +53,23 @@
                         }
                     ?>
                 </tbody>
-                <tr>
                 <form action='edicion.php'   method='POST'>
+                    <tr>
                     <?php  
                         echo "<input type='hidden' name='id_edificio' value=$id>" ;
                         echo "<input type='hidden' name='id_cuenta' value=$id_cuenta>"; 
                     ?>
                     <td><input type="text" name="nombre_edificio" placeholder = "Nombre Edificio"></td>
                     <td><input type="text" name="aforo_total" placeholder = "Aforo"></td>
-                    <td><button class="boton_ingresar" type="submit" onclick="return editarE()">Guardar</button><td>
+                    <tr>
+                    <td><button class="boton_ingresar" type="submit" onclick="return editarE()">Guardar</button></td>
                 </form>
+                <td> <button class="boton_ingresar" onclick= "window.location.href='mantenedor.php?id_cuenta=<?php echo $id_cuenta; ?>'" type="submit">Cancelar</button><td>
+                
                 </tr>
             </table>
         </div>
     </div>
+    <script type="text/javascript" src="funciones.js"></script>
+    </body>
 </html>
