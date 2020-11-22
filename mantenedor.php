@@ -1,5 +1,6 @@
 <?php
     require("conexion.php");
+    $id_cuenta=$_GET['id_cuenta'];
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +60,8 @@
             <br>
             <input type="text" placeholder="Aforo Edificio" name="aforo_total">
             <br>
-            <button class="boton_ingresar" type="submit" onclick="return confirmarE()">Agregar</button>
+            <input type="hidden" name="id_cuenta" value='<?php echo $id_cuenta; ?>' >
+            <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
         </form>
         </div>
         
