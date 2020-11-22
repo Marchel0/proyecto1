@@ -162,7 +162,6 @@ function editarE(){
 function validacion(){
     var rut = document.getElementById('rut');
     var clave = document.getElementById('clave');
-    var error = document.getElementById('error'); 
     if(rut.value === null || rut.value === '' || clave.value === null || clave.value === ''){
         alert("Datos no validos");
     } 
