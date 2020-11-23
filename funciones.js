@@ -146,9 +146,16 @@ function informacionUsuario(){
 
 }});
 
-function confirmarE(){
-    var respuesta = confirm('¿Está seguro que desea añadir este edificio?');
 
+function confirmarE(){
+    var nombre = $("#campo_n").val()
+    var aforo = $("#campo_a").val()
+
+    if(nombre === null || nombre === '' || aforo === null || aforo === ''){
+        
+    }else{
+        var respuesta = confirm('¿Está seguro que desea añadir este edificio?');
+        console.log(aforo, nombre);
     if(respuesta == true){
         alert("Se añadio de manera exitosa!");
         return true;
@@ -156,6 +163,8 @@ function confirmarE(){
         alert("Operación cancelada");
         return false;
     }
+    }
+    
 }
 function eliminarE(){
     var respuesta = confirm('¿Está seguro que desea eliminar este edificio de los registros?');

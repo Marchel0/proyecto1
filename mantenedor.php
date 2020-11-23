@@ -58,9 +58,9 @@
         <div class="añadir-edificio">
         <h3>Añadir Edificio</h3>
         <form action="agregar.php" method="POST">
-            <input type="text" placeholder="Nombre Edificio" name="nombre_edificio">
+            <input type="text" placeholder="Nombre Edificio" name="nombre_edificio" id="campo_n">
             <br>
-            <input type="text" placeholder="Aforo Edificio" name="aforo_total">
+            <input type="text" placeholder="Aforo Edificio" name="aforo_total" id="campo_a">
             <br>
             <input type="hidden" name="id_cuenta" value='<?php echo $id_cuenta; ?>' >
             <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
