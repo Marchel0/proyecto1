@@ -26,10 +26,12 @@
     </nav>  
     <div class="contenedor">
         <div class="aforo-permitido">
-            
-        </div>
-        <div class="grafico">
-
+            <h3>Aforo Permitido</h3>
+            <form id="form-aforo">
+                <input id="input-aforo" type="text" placeholder="Aforo Permitido">
+                <br>
+                <button type="submit" class="boton_ingresar">Modificar</button>
+            </form>
         </div>
         <div class="tabla-datos">
             <table id="tabla-datos-mantenedor" class="display" >

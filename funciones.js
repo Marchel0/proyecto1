@@ -1,4 +1,5 @@
 $(document).ready( function () {
+
     $('#tabla-datos-mantenedor').DataTable({
         searching :false,
         ordering: false,
@@ -11,6 +12,23 @@ $(document).ready( function () {
         ordering: false,
         info : false,
         paging : false
+    });
+
+    $('#form-aforo').submit(function(e) {
+        e.preventDefault();
+        var datos = {
+            "aforo_permitido":$("#input-aforo").val(),
+        }
+        console.log(datos);
+        $.ajax({
+            url: "actualizar_aforo.php",
+            data: datos,
+            type: "POST",
+            success: function(response){
+                listarEdificiosMantenedor();
+                $('#form-aforo').trigger('reset');
+            }
+        })
     });
 
     listarEdificiosMantenedor();
@@ -40,7 +58,6 @@ $(document).ready( function () {
                         <td class="tabla-opciones">
                         <form action='eliminar.php' method='POST'>
                             <input type="hidden"  name="id_edificio" value=${edificios.id_edificio}>
-                            <input type="hidden" name="id_cuenta" value=${id_cuenta}>
                             <button class="btn" onclick="return eliminarE()" value="ELIMINAR DATOS">
                                 <span class="material-icons">
                                     delete
@@ -162,8 +179,11 @@ function editarE(){
 function validacion(){
     var rut = document.getElementById('rut');
     var clave = document.getElementById('clave');
+    var error = document.getElementById('error'); 
     if(rut.value === null || rut.value === '' || clave.value === null || clave.value === ''){
         alert("Datos no validos");
     } 
 
 }
+
+
