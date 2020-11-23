@@ -4,8 +4,10 @@
 
     $aforo_permitido = $_POST['aforo_permitido'];
     
-    if(!empty($aforo_permitido)){
+    if($aforo_permitido >=0 && $aforo_permitido <= 100){
         $query = "UPDATE edificio SET aforo_permitido = '$aforo_permitido'";
+    }else{
+        echo false;
     }
 
     $result = mysqli_query($conexion, $query);

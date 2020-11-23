@@ -25,8 +25,12 @@ $(document).ready( function () {
             data: datos,
             type: "POST",
             success: function(response){
-                listarEdificiosMantenedor();
-                $('#form-aforo').trigger('reset');
+                if(response){
+                    alert("El Valor debe ser entre 0 y 100");
+                }else{
+                    listarEdificiosMantenedor();
+                    $('#form-aforo').trigger('reset');
+                }
             }
         })
     });
