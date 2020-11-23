@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2020 a las 19:18:50
+-- Tiempo de generación: 23-11-2020 a las 01:47:13
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -51,16 +51,18 @@ INSERT INTO `cuenta` (`id_cuenta`, `rut`, `clave`, `tipo_cuenta`) VALUES
 CREATE TABLE `edificio` (
   `id_edificio` int(11) NOT NULL,
   `nombre_edificio` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `aforo_total` int(5) NOT NULL
+  `aforo_total` int(5) NOT NULL,
+  `aforo_permitido` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `edificio`
 --
 
-INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`) VALUES
-(3, 'Agustin', 2000),
-(5, 'Central', 1000);
+INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `aforo_permitido`) VALUES
+(3, 'Agustin', 2000, 12),
+(5, 'Central', 1000, 12),
+(6, 'Agustin', 2000, 12);
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,7 @@ ALTER TABLE `cuenta`
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
