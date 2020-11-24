@@ -62,6 +62,7 @@ $(document).ready( function () {
                         <td class="tabla-opciones">
                         <form action='eliminar.php' method='POST'>
                             <input type="hidden"  name="id_edificio" value=${edificios.id_edificio}>
+                            <input type="hidden" name="id_cuenta" value=${id_cuenta}>
                             <button class="btn" onclick="return eliminarE()" value="ELIMINAR DATOS">
                                 <span class="material-icons">
                                     delete
@@ -192,7 +193,6 @@ function editarE(){
 function validacion(){
     var rut = document.getElementById('rut');
     var clave = document.getElementById('clave');
-    var error = document.getElementById('error'); 
     if(rut.value === null || rut.value === '' || clave.value === null || clave.value === ''){
         alert("Datos no validos");
     } 
