@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2020 a las 01:47:13
+-- Tiempo de generación: 29-11-2020 a las 00:15:42
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -28,19 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cuenta` (
-  `id_cuenta` int(11) NOT NULL,
-  `rut` int(9) NOT NULL,
-  `clave` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `tipo_cuenta` enum('administrativa','docente','alumno','mantenedor') COLLATE utf8_spanish2_ci NOT NULL
+  `rut_usuario` int(9) NOT NULL,
+  `clave` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `correo` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `telefono` int(9) NOT NULL,
+  `direccion` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha_nacimineto` date NOT NULL,
+  `tipo_cuenta` enum('alumno','administrador','docente','administrativa','invitado','auxiliar de aseo','mantencion') COLLATE utf8_spanish2_ci NOT NULL,
+  `codigo_qr` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `cuenta`
---
-
-INSERT INTO `cuenta` (`id_cuenta`, `rut`, `clave`, `tipo_cuenta`) VALUES
-(1, 556667778, '1234', 'alumno'),
-(2, 112223334, '1234', 'mantenedor');
 
 -- --------------------------------------------------------
 
@@ -52,17 +48,20 @@ CREATE TABLE `edificio` (
   `id_edificio` int(11) NOT NULL,
   `nombre_edificio` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `aforo_total` int(5) NOT NULL,
-  `aforo_permitido` int(3) NOT NULL
+  `descripcion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `edificio`
+-- Estructura de tabla para la tabla `oficina`
 --
 
-INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `aforo_permitido`) VALUES
-(3, 'Agustin', 2000, 12),
-(5, 'Central', 1000, 12),
-(6, 'Agustin', 2000, 12);
+CREATE TABLE `oficina` (
+  `id_oficina` int(11) NOT NULL,
+  `id_edificio` int(11) NOT NULL,
+  `rut_persona` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -71,10 +70,11 @@ INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `aforo_
 --
 
 CREATE TABLE `permanecer` (
-  `rut` int(9) NOT NULL,
+  `id_permanecer` int(11) NOT NULL,
+  `rut_persona` int(11) NOT NULL,
   `id_edificio` int(11) NOT NULL,
   `fecha_entrada` datetime NOT NULL,
-  `fecha_salida` datetime DEFAULT NULL
+  `fecha_salida` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -84,18 +84,30 @@ CREATE TABLE `permanecer` (
 --
 
 CREATE TABLE `persona` (
-  `rut` int(9) NOT NULL,
-  `nombre` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `tipo_rol` enum('auxiliar de aseo','mantención','seguridad','administrativos','docente','alumno','invitado') COLLATE utf8_spanish2_ci NOT NULL
+  `rut_persona` int(9) NOT NULL,
+  `nombre_persona` varchar(45) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `persona`
+-- Estructura de tabla para la tabla `personal_oficina`
 --
 
-INSERT INTO `persona` (`rut`, `nombre`, `tipo_rol`) VALUES
-(112223334, 'Juan Perez', 'mantención'),
-(556667778, 'Felipe Rodriguez', 'alumno');
+CREATE TABLE `personal_oficina` (
+  `rut_persona` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personal_requerido`
+--
+
+CREATE TABLE `personal_requerido` (
+  `rut_persona` int(9) NOT NULL,
+  `rol_personal_requerido` enum('mantencion','seguridad','auxiliar de aseo','') COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Índices para tablas volcadas
@@ -105,8 +117,7 @@ INSERT INTO `persona` (`rut`, `nombre`, `tipo_rol`) VALUES
 -- Indices de la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-  ADD PRIMARY KEY (`id_cuenta`),
-  ADD KEY `rut` (`rut`);
+  ADD PRIMARY KEY (`rut_usuario`);
 
 --
 -- Indices de la tabla `edificio`
@@ -115,33 +126,60 @@ ALTER TABLE `edificio`
   ADD PRIMARY KEY (`id_edificio`);
 
 --
+-- Indices de la tabla `oficina`
+--
+ALTER TABLE `oficina`
+  ADD PRIMARY KEY (`id_oficina`),
+  ADD KEY `id_edificio` (`id_edificio`),
+  ADD KEY `rut_persona` (`rut_persona`);
+
+--
 -- Indices de la tabla `permanecer`
 --
 ALTER TABLE `permanecer`
-  ADD PRIMARY KEY (`rut`,`id_edificio`),
+  ADD PRIMARY KEY (`id_permanecer`),
+  ADD KEY `rut_persona` (`rut_persona`),
   ADD KEY `id_edificio` (`id_edificio`);
 
 --
 -- Indices de la tabla `persona`
 --
 ALTER TABLE `persona`
-  ADD PRIMARY KEY (`rut`);
+  ADD PRIMARY KEY (`rut_persona`);
+
+--
+-- Indices de la tabla `personal_oficina`
+--
+ALTER TABLE `personal_oficina`
+  ADD PRIMARY KEY (`rut_persona`);
+
+--
+-- Indices de la tabla `personal_requerido`
+--
+ALTER TABLE `personal_requerido`
+  ADD PRIMARY KEY (`rut_persona`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `cuenta`
---
-ALTER TABLE `cuenta`
-  MODIFY `id_cuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `oficina`
+--
+ALTER TABLE `oficina`
+  MODIFY `id_oficina` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `permanecer`
+--
+ALTER TABLE `permanecer`
+  MODIFY `id_permanecer` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -151,14 +189,33 @@ ALTER TABLE `edificio`
 -- Filtros para la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-  ADD CONSTRAINT `cuenta_ibfk_1` FOREIGN KEY (`rut`) REFERENCES `persona` (`rut`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cuenta_ibfk_1` FOREIGN KEY (`rut_usuario`) REFERENCES `persona` (`rut_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `oficina`
+--
+ALTER TABLE `oficina`
+  ADD CONSTRAINT `oficina_ibfk_1` FOREIGN KEY (`id_edificio`) REFERENCES `edificio` (`id_edificio`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `oficina_ibfk_2` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `permanecer`
 --
 ALTER TABLE `permanecer`
-  ADD CONSTRAINT `permanecer_ibfk_1` FOREIGN KEY (`rut`) REFERENCES `persona` (`rut`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `permanecer_ibfk_2` FOREIGN KEY (`id_edificio`) REFERENCES `edificio` (`id_edificio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `permanecer_ibfk_1` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `permanecer_ibfk_2` FOREIGN KEY (`id_edificio`) REFERENCES `edificio` (`id_edificio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `personal_oficina`
+--
+ALTER TABLE `personal_oficina`
+  ADD CONSTRAINT `personal_oficina_ibfk_1` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `personal_requerido`
+--
+ALTER TABLE `personal_requerido`
+  ADD CONSTRAINT `personal_requerido_ibfk_1` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
