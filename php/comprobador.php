@@ -12,6 +12,6 @@
     if($tipo_cuenta == mantenedor){
         header("Location: mantenedor.php?id_cuenta=$id_cuenta");
     }else{
-        header("Location: index.php");
+        header("Location: ../index.php");
     }
     ?>

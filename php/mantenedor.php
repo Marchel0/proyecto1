@@ -7,8 +7,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="ventana-emergente.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/ventana-emergente.css">
     <title>Mantenedor</title>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -28,7 +28,7 @@
 
 <body>
     <nav class="nav">
-        <div class="nav-brand"><img src="Imagenes/ucsc.png" alt=""></div>
+        <div class="nav-brand"><img src="../Imagenes/ucsc.png" alt=""></div>
         <ol class="nav-links" id="nav-info">    
         </ol>
     </nav>  
@@ -75,6 +75,6 @@
         </div>
         
     </div>
-    <script type="text/javascript" src="funciones.js"></script>
+    <script type="text/javascript" src="../js/funciones.js"></script>
 </body>
 </html>

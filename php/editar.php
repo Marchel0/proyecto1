@@ -8,7 +8,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -70,6 +70,6 @@
             </table>
         </div>
     </div>
-    <script type="text/javascript" src="funciones.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
     </body>
 </html>

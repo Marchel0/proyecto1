@@ -8,7 +8,7 @@ $(document).ready( function () {
             style: 'single'
         },
         ajax: {
-            url: "lista-edificios.php",
+            url: "../php/lista-edificios.php",
             dataSrc: "",
           },
           columns: [
@@ -43,7 +43,7 @@ $(document).ready( function () {
 
     function eliminarEdificio(id_edificio){
         $.ajax({
-            url: "eliminar.php",
+            url: "../php/eliminar.php",
             data : { id_edificio },
             type: "POST",
             success: function(response){
@@ -52,12 +52,12 @@ $(document).ready( function () {
     }
 
     function editarEdificio(id_edificio){
-        window.location.href = `editar.php?id_cuenta=${id_cuenta}&id_edificio=${id_edificio}`
+        window.location.href = `php/editar.php?id_cuenta=${id_cuenta}&id_edificio=${id_edificio}`
     }
 
     var tabla = $("#tabla").DataTable({
         ajax: {
-          url: "lista-edificios.php",
+          url: "php/lista-edificios.php",
           dataSrc: "",
         },
         columns: [
@@ -74,7 +74,7 @@ $(document).ready( function () {
         }
         console.log(datos);
         $.ajax({
-            url: "actualizar_aforo.php",
+            url: "../php/actualizar_aforo.php",
             data: datos,
             type: "POST",
             success: function(response){
@@ -92,8 +92,8 @@ informacionUsuario();
 function informacionUsuario(){
 
     $.ajax({
-        url: "informacion_cuenta.php",
-        data: {id_cuenta},
+        url: "../php/informacion_cuenta.php",
+        data: { id_cuenta },
         type: "POST",
         success: function(response){
             let datosCuenta = JSON.parse(response);
@@ -156,13 +156,5 @@ function editarE(){
     }
 }
 
-function validacion(){
-    var rut = document.getElementById('rut');
-    var clave = document.getElementById('clave');
-    if(rut.value === null || rut.value === '' || clave.value === null || clave.value === ''){
-        alert("Datos no validos");
-    } 
-
-}
 
 
