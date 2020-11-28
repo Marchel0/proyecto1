@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="ventana-emergente.css">
     <title>Mantenedor</title>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -60,6 +61,7 @@
             </tfoot>
             </table>
         </div>
+
         <div class="añadir-edificio">
         <h3>Añadir Edificio</h3>
         <form action="agregar.php" method="POST">

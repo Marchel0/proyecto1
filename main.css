@@ -127,13 +127,14 @@ body{
     }
 
     .tabla-datos{
-        width: 50%;
+        width: 75%;
         margin: 0 auto;
+        padding-right: 4%;
+    }
+    .aforo-permitido{
+    padding-left: 3%;
     }
 
-    .añadir-edificio{
-        width: 25%;
-    }
 
     .añadir-edificio input{
         margin-top: 5px;
