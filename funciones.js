@@ -1,18 +1,71 @@
 $(document).ready( function () {
-
-    $('#tabla-datos-mantenedor').DataTable({
-        searching :false,
-        ordering: false,
-        info : false,
-        paging : false
+    let valores = window.location.search;
+    let urlParams = new URLSearchParams(valores);
+    var id_cuenta = urlParams.get('id_cuenta');
+    
+    var tablaMantenedor = $('#tabla-mantenedor').DataTable({
+        select: {
+            style: 'single'
+        },
+        ajax: {
+            url: "lista-edificios.php",
+            dataSrc: "",
+          },
+          columns: [
+            { data: "id_edificio" },
+            { data: "nombre_edificio" },
+            { data: "aforo_actual" },
+            { data: "aforo_total" },
+          ],
+          dom: 'Bfrtip',
+          buttons: [
+              {
+                  text: 'Editar',
+                  action: function(e,dt,node,config){
+                    editarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
+                  }
+              },
+              {
+                text: 'Eliminar',
+                action: function(e,dt,node,config){
+                    if(eliminarE()){
+                        eliminarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
+                        tablaMantenedor.ajax.reload();
+                    }
+                }
+            }
+          ]
     });
+    
+    $('#tabla-mantenedor tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
+    } );
 
-    $('#tabla').DataTable({
-        searching :false,
-        ordering: false,
-        info : false,
-        paging : false
-    });
+    function eliminarEdificio(id_edificio){
+        $.ajax({
+            url: "eliminar.php",
+            data : { id_edificio },
+            type: "POST",
+            success: function(response){
+            }
+        })
+    }
+
+    function editarEdificio(id_edificio){
+        window.location.href = `editar.php?id_cuenta=${id_cuenta}&id_edificio=${id_edificio}`
+    }
+
+    var tabla = $("#tabla").DataTable({
+        ajax: {
+          url: "lista-edificios.php",
+          dataSrc: "",
+        },
+        columns: [
+          { data: "nombre_edificio" },
+          { data: "aforo_actual" },
+          { data: "aforo_total" },
+        ],
+      });
 
     $('#form-aforo').submit(function(e) {
         e.preventDefault();
@@ -28,103 +81,16 @@ $(document).ready( function () {
                 if(response){
                     alert("El Valor debe ser entre 0 y 100");
                 }else{
-                    listarEdificiosMantenedor();
+                    tablaMantenedor.ajax.reload();
                     $('#form-aforo').trigger('reset');
                 }
             }
         })
     });
 
-    listarEdificiosMantenedor();
-    function listarEdificiosMantenedor(){
-        let valores = window.location.search;
-        let urlParams = new URLSearchParams(valores);
-        var id_cuenta = urlParams.get('id_cuenta');
-        $.ajax({
-            url: "lista-edificios.php",
-            type: "GET",
-            success: function (response) {
-                let edificios = JSON.parse(response);
-                let template = '';
-    
-                edificios.forEach(edificios => {
-                    template += 
-                    `<tr>
-                        <td> 
-                            ${edificios.nombre_edificio}
-                        </td>
-                        <td> 
-                            ${edificios.aforo_actual}
-                        </td>
-                        <td> 
-                            ${edificios.aforo_total}
-                        </td>
-                        <td class="tabla-opciones">
-                        <form action='eliminar.php' method='POST'>
-                            <input type="hidden"  name="id_edificio" value=${edificios.id_edificio}>
-                            <input type="hidden" name="id_cuenta" value=${id_cuenta}>
-                            <button class="btn" onclick="return eliminarE()" value="ELIMINAR DATOS">
-                                <span class="material-icons">
-                                    delete
-                                </span> 
-                            </button>
-                            </form>
-
-                            <form action='editar.php' method='POST'>
-                            <input type="hidden" name="id_edificio" value=${edificios.id_edificio}>
-                            <input type="hidden" name="id_cuenta" value=${id_cuenta}>
-                            <button class="btn" >
-                                <span class="material-icons">
-                                    edit
-                                </span> 
-                            </button>
-                            </form>
-                        </td>
-                    </tr>
-                    `
-                });
-    
-                $('#lista-datos-mantenedor').html(template);
-                
-            }
-        });
-    
-    listarEdificios();
-    function listarEdificios(){
-    $.ajax({
-        url: "lista-edificios.php",
-        type: "GET",
-        success: function (response) {
-            let edificios = JSON.parse(response);
-            let template = '';
-
-            edificios.forEach(edificios => {
-                template += 
-                `<tr>
-                    <td> 
-                        ${edificios.nombre_edificio}
-                    </td>
-                    <td> 
-                        ${edificios.aforo_actual}
-                    </td>
-                    <td> 
-                        ${edificios.aforo_total}
-                    </td>
-                </tr>
-                `
-            });
-
-            $('#lista-datos').html(template);
-            
-        }
-    });
-}
-
 informacionUsuario();
 function informacionUsuario(){
-    let valores = window.location.search;
-    let urlParams = new URLSearchParams(valores);
-    var id_cuenta = urlParams.get('id_cuenta');
+
     $.ajax({
         url: "informacion_cuenta.php",
         data: {id_cuenta},
@@ -145,7 +111,7 @@ function informacionUsuario(){
     });
 }
 
-}});
+});
 
 
 function confirmarE(){
