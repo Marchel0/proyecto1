@@ -1,7 +1,7 @@
 $(document).ready( function () {
     let valores = window.location.search;
     let urlParams = new URLSearchParams(valores);
-    var rut = urlParams.get('rut');
+    let rut_persona = urlParams.get('rut_persona');
     
     var tablaMantenedor = $('#tabla-mantenedor').DataTable({
         select: {
@@ -17,12 +17,18 @@ $(document).ready( function () {
             { data: "aforo_actual" },
             { data: "aforo_total" },
           ],
+          "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false
+            }
+        ],
           dom: 'Bfrtip',
           buttons: [
               {
                   text: 'Editar',
                   action: function(e,dt,node,config){
-                        editarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
+                    editarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
                   }
               },
               {
@@ -41,6 +47,12 @@ $(document).ready( function () {
                     for (var i=0;i<elems.length;i+=1){
                     elems[i].style.display = 'block';
                     }
+                }
+            },
+            {
+                text: 'Detalle',
+                action: function(e,dt,node,config){
+                    detalleEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio)
                 }
             }
           ]
@@ -62,7 +74,11 @@ $(document).ready( function () {
     }
 
     function editarEdificio(id_edificio){
-        window.location.href = `editar.php?rut=${rut}&id_edificio=${id_edificio}`
+        window.location.href = `editar.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
+    }
+
+    function detalleEdificio(id_edificio){
+        window.location.href = `detalle_edificio.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
     }
 
     var tabla = $("#tabla").DataTable({
@@ -103,7 +119,7 @@ function informacionUsuario(){
 
     $.ajax({
         url: "../php/informacion_cuenta.php",
-        data: { rut },
+        data: { rut_persona },
         type: "POST",
         success: function(response){
             let datosCuenta = JSON.parse(response);
@@ -112,7 +128,6 @@ function informacionUsuario(){
             datosCuenta.forEach(datosCuenta => {
                 template2 += 
                 `<li>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</li>`
-
             });
 
             $('#nav-info').html(template2);
