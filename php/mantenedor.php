@@ -1,6 +1,6 @@
 <?php
     require("conexion.php");
-    $id_cuenta=$_GET['id_cuenta'];
+    $rut=$_GET['rut'];
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +69,7 @@
             <br>
             <input type="text" placeholder="Aforo Edificio" name="aforo_total">
             <br>
-            <input type="hidden" name="id_cuenta" value='<?php echo $id_cuenta; ?>' >
+            <input type="hidden" name="id_cuenta" value='<?php echo $rut; ?>' >
             <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
         </form>
         </div>

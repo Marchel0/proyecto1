@@ -7,14 +7,14 @@
     $result = mysqli_query($conexion, $query);
   
     if(!$result) {
-        die('Query Error' . mysqli_error($conexion));
+        die('Query Error'.mysqli_error($conexion));
     }
 
     $json = array();
     while($row = mysqli_fetch_array($result)) {
         $id_edificio = $row['id_edificio'];
 
-        $query = "SELECT COUNT(rut) as aforo_actual FROM permanecer WHERE id_edificio = '$id_edificio AND fecha_salida is NULL'";
+        $query = "SELECT COUNT(rut_persona) as aforo_actual FROM permanecer WHERE id_edificio = '$id_edificio AND fecha_salida is NULL'";
         $aforo_total = mysqli_query($conexion, $query);
         
         $json[] = array(

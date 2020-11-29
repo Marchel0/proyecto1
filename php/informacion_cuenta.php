@@ -2,9 +2,9 @@
 
     require("conexion.php");
 
-    $id_cuenta = $_POST["id_cuenta"];
+    $rut = $_POST["rut"];
 
-    $query = "SELECT nombre, tipo_cuenta FROM persona JOIN cuenta USING(rut) WHERE id_cuenta='$id_cuenta'";
+    $query = "SELECT nombre_persona, tipo_cuenta FROM persona JOIN cuenta USING(rut_persona) WHERE rut_persona='$rut'";
 
     $result = mysqli_query($conexion, $query);
 

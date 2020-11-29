@@ -1,7 +1,7 @@
 $(document).ready( function () {
     let valores = window.location.search;
     let urlParams = new URLSearchParams(valores);
-    var id_cuenta = urlParams.get('id_cuenta');
+    var rut = urlParams.get('rut');
     
     var tablaMantenedor = $('#tabla-mantenedor').DataTable({
         select: {
@@ -22,7 +22,7 @@ $(document).ready( function () {
               {
                   text: 'Editar',
                   action: function(e,dt,node,config){
-                    editarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
+                        editarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
                   }
               },
               {
@@ -31,6 +31,15 @@ $(document).ready( function () {
                     if(eliminarE()){
                         eliminarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
                         tablaMantenedor.ajax.reload();
+                    }
+                }
+            },
+            {
+                text: 'Agregar',
+                action: function(e,dt,node,config){
+                    var elems = document.getElementsByClassName('añadir-edificio');
+                    for (var i=0;i<elems.length;i+=1){
+                    elems[i].style.display = 'block';
                     }
                 }
             }
@@ -47,12 +56,13 @@ $(document).ready( function () {
             data : { id_edificio },
             type: "POST",
             success: function(response){
+                
             }
         })
     }
 
     function editarEdificio(id_edificio){
-        window.location.href = `php/editar.php?id_cuenta=${id_cuenta}&id_edificio=${id_edificio}`
+        window.location.href = `editar.php?rut=${rut}&id_edificio=${id_edificio}`
     }
 
     var tabla = $("#tabla").DataTable({
@@ -93,7 +103,7 @@ function informacionUsuario(){
 
     $.ajax({
         url: "../php/informacion_cuenta.php",
-        data: { id_cuenta },
+        data: { rut },
         type: "POST",
         success: function(response){
             let datosCuenta = JSON.parse(response);
