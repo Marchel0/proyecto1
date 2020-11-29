@@ -1,6 +1,6 @@
 <?php
     require("conexion.php");
-    $rut=$_GET['rut'];
+    $rut=$_GET['rut_persona'];
 ?>
 
 <!DOCTYPE html>

@@ -6,7 +6,5 @@
    
     $delete = "DELETE  FROM  edificio WHERE id_edificio='$id_edificio'";
     $result = mysqli_query($conexion,$delete);
-    
-    header("Location: mantenedor.php?id_cuenta=$id_cuenta");
 
 ?>
