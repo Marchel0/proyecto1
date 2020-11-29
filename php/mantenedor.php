@@ -69,7 +69,7 @@
             <br>
             <input type="text" placeholder="Aforo Edificio" name="aforo_total">
             <br>
-            <input type="hidden" name="id_cuenta" value='<?php echo $rut; ?>' >
+            <input type="hidden" name="rut_persona" value='<?php echo $rut; ?>' >
             <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
             <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
         </form>

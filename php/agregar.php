@@ -3,7 +3,7 @@
 
     $nombre_edificio = $_POST["nombre_edificio"];
     $aforo_total = $_POST["aforo_total"];
-    $id_cuenta=$_POST['id_cuenta'];
+    $rut=$_POST['rut_persona'];
     
     $sql_aforo=  "SELECT aforo_permitido FROM edificio LIMIT 1";
     $validacion_aforo = mysqli_query($conexion, $sql_aforo);
@@ -16,6 +16,6 @@
     }
          
 
-    header("Location: mantenedor.php?id_cuenta=$id_cuenta");
+    header("Location: mantenedor.php?rut_persona=$rut");
 
 ?>
