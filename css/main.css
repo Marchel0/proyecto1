@@ -71,11 +71,25 @@ body{
     color: white;
     cursor: pointer;
 }
+.boton_cancelar{
+    height: 20px;
+    width: 80px;
+    border-radius: 20px;
+    border: 0;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
 
 .boton_ingresar:hover{
-    background-color: lightgray;
+    background-color: white;
     color: black
 }
+.boton_cancelar:hover{
+    background-color: white;
+    color: black
+}
+
 /* Escritorio */
 @media screen and (min-width: 768px){
     /* Barra navegacion */

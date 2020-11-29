@@ -62,15 +62,16 @@
             </table>
         </div>
 
-        <div class="añadir-edificio">
+        <div class="añadir-edificio" id="agregar">
         <h3>Añadir Edificio</h3>
-        <form action="agregar.php" method="POST">
+        <form action="agregar.php" method="POST" >
             <input type="text" placeholder="Nombre Edificio" name="nombre_edificio">
             <br>
             <input type="text" placeholder="Aforo Edificio" name="aforo_total">
             <br>
             <input type="hidden" name="id_cuenta" value='<?php echo $rut; ?>' >
             <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
+            <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
         </form>
         </div>
         

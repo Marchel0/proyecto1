@@ -143,6 +143,11 @@ function confirmarE(){
     }
     
 }
+ function cancelar(){
+    alert("Operación cancelada");
+    Document.getElementById("agregar").style.display="none";
+    return false;
+ }
 function eliminarE(){
     var respuesta = confirm('¿Está seguro que desea eliminar este edificio de los registros?');
 
