@@ -28,8 +28,12 @@ $(document).ready( function () {
               {
                   text: 'Editar',
                   action: function(e,dt,node,config){
-                    editarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
-                  }
+                    document.getElementById('editar').style.display = 'block'; 
+                    document.getElementById('id_edificio').value = tablaMantenedor.rows('.selected').data()[0].id_edificio;
+                    var edificio = tablaMantenedor.rows('.selected').data()[0]
+                    let datos = `<thead><td>${edificio.nombre_edificio}</td><td>${edificio.aforo_total}</td></thead>`
+                    $('#edicion_datos').html(datos);
+                }
               },
               {
                 text: 'Eliminar',
@@ -43,10 +47,7 @@ $(document).ready( function () {
             {
                 text: 'Agregar',
                 action: function(e,dt,node,config){
-                    var elems = document.getElementsByClassName('añadir-edificio');
-                    for (var i=0;i<elems.length;i+=1){
-                    elems[i].style.display = 'block';
-                    }
+                    document.getElementById('agregar').style.display = 'block'; 
                 }
             },
             {

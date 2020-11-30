@@ -78,6 +78,23 @@
         </form>
         </div>
         
+        <div class="añadir-edificio" id="editar">
+        <h3>Editar Edificio</h3>
+        <div id="edicion_datos">
+            
+        </div> 
+        <form action="edicion.php" method="POST" >
+            <input type="text" placeholder="Nombre Edificio" name="nombre_edificio">
+            <br>
+            <input type="text" placeholder="Aforo Edificio" name="aforo_total">
+            <br>
+            <input type="hidden" name="id_edificio" id="id_edificio" value="">
+
+            <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
+            <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
+        </form>
+        </div>
+        
     </div>
     <script type="text/javascript" src="../js/funciones.js"></script>
 </body>
