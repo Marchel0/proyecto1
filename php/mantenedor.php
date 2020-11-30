@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
 
     <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +45,7 @@
             </form>
         </div>
         <div class="tabla-datos">
-            <table id="tabla-mantenedor" class="display" >
+            <table id="tabla-mantenedor" class="display responsive nowrap" style="width:100%" >
             <thead>
                 <tr>
                     <th>Identificador</th>

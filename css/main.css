@@ -90,6 +90,16 @@ body{
     color: black
 }
 
+.tabla-datos{
+    margin-left: 210px;
+    padding: 10px;
+}
+
+.aforo-permitido{
+    margin-left: 210px;
+    padding: 10px;
+}
+
 /* Escritorio */
 @media screen and (min-width: 768px){
     /* Barra navegacion */
@@ -125,10 +135,6 @@ body{
         display: inline-flex;
     }
     /* Tabla de datos */
-    .tabla-opciones form{
-        display: inline-block;
-    }
-
     td {
         text-align: center;
     }
@@ -145,10 +151,11 @@ body{
         margin: 0 auto;
         padding-right: 4%;
     }
-    .aforo-permitido{
-    padding-left: 3%;
-    }
 
+    .aforo-permitido{
+        padding-left: 3%;
+        margin-left: 0;
+    }
 
     .añadir-edificio input{
         margin-top: 5px;

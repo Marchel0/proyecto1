@@ -14,6 +14,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+        
 </head>
 <body>
     <nav class="nav">
@@ -28,7 +32,7 @@
     </nav>
     <div class="contenedor">
         <div class="tabla-datos">
-            <table id="tabla" class="display" >
+            <table id="tabla" class="display responsive nowrap" style="width:100%" >
             <thead>
                 <tr>
                     <th>Nombre Edificio</th>
