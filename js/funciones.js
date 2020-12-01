@@ -31,7 +31,19 @@ $(document).ready( function () {
                     document.getElementById('editar').style.display = 'block'; 
                     document.getElementById('id_edificio').value = tablaMantenedor.rows('.selected').data()[0].id_edificio;
                     var edificio = tablaMantenedor.rows('.selected').data()[0]
-                    let datos = `<thead><td>${edificio.nombre_edificio}</td><td>${edificio.aforo_total}</td></thead>`
+                    let datos = `<table cellspacing="10" style="padding-left: 25%"> 
+                                <tr> 
+                                <td> 
+                                <tr> 
+                                <th>Nombre Edificio</th> 
+                                <th>Aforo</th> 
+                                </tr> 
+                                <tr> 
+                                <td>${edificio.nombre_edificio}</td>  
+                                <td>${edificio.aforo_total}</td> 
+                                </tr> 
+                                </tr> 
+                                </table> `
                     $('#edicion_datos').html(datos);
                 }
               },
