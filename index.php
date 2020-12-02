@@ -23,11 +23,8 @@
     <nav class="nav">
         <div class="nav-brand"><img src="Imagenes/ucsc.png" alt=""></div>
         <ol class="nav-links">    
-            <form action="php/comprobador.php" method="POST"">
-                <li><input type="text" placeholder= "Usuario" class="cuenta" name="rut" id = "rut"></li>
-                <li><input type="password" placeholder= "Contraseña" class="cuenta" name="clave" id="clave"></li> 
-                <li><button type="submit" class="boton_ingresar" onclick="validacion()">Ingresar</button></li>
-            </form>
+            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/login.php'">Login</button>
+            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/registro.php'" >registrar invitado</button>
         </ol>
     </nav>
     <div class="contenedor">
