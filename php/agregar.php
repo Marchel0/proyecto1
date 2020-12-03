@@ -16,6 +16,6 @@
     }
          
 
-    header("Location: mantenedor.php?rut_persona=$rut");
+    header("Location: mantenedor.php");
 
 ?>
