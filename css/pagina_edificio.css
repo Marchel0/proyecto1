@@ -1,0 +1,103 @@
+
+.body-content{
+    margin-left: 210px;
+    margin-top: 0;
+    padding: 10px;
+}
+
+.marcador{
+    width: 100%;
+    text-align: center;
+    display: inline-flex;
+}
+
+#actual{
+    width: 50%;
+}
+
+#permitido{
+    width: 50%;
+}
+
+.marco-acceso{
+    width: 100%;
+    text-align: center;
+}
+
+#acceso-confirmacion {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    border-radius: 100%;
+}
+
+#titulo {
+    width: 100%;
+    text-align: center;
+}
+
+#lector{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+@media screen and (min-width: 768px){
+
+    .body-content{
+        margin-top: 90px;
+        margin-left: 0;
+        width: 100%;
+        padding: 0;
+    }
+    
+    .marcador{
+        width: 100%;
+        text-align: center;
+        display: inline-flex;
+    }
+
+    #actual{
+        width: 50%;
+    }
+    
+    #permitido{
+        width: 50%;
+    }
+    
+    .marco-acceso{
+        width: 100%;
+        text-align: center;
+    }
+    
+    #acceso-confirmacion {
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        margin: 0;
+        margin-bottom: 5px;
+        border-radius: 100%;
+    }
+
+    #titulo {
+        width: 100%;
+        text-align: center;
+    }
+
+    #lector{
+        width: 250px;
+        height: 175px;
+        border-radius: 45%;
+    }
+    
+    #total-aforo{
+        width: 100%;
+        display: inline-flex;
+    }
+
+    .marcador-datos{
+        width: 50%;
+    }
+}
