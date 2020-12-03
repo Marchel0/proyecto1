@@ -39,42 +39,41 @@
         <div class="perfil">
             <br>
             <br>
-            <h2>Datos Personales:</h2> 
+            <h2>Editar datos Personales:</h2> 
             <br>
-            <table cellspacing="10" cellpadding="10" border="2">
-                
-                <tr>
-                    <th>Nombre</th>
-                    <td>NOMBRE</td>
-                </tr>
-                <tr>
-                    <th>Rut</th>
-                    <td>RUT</td>
-                </tr>
-                <tr>
-                    <th>Correo</th>
-                    <td>CORREO</td>
-                </tr>
-                <tr>
-                    <th>Fono</th>
-                    <td>TELEFONO</td>
-                </tr>
-                <tr>
-                    <th>Direccion</th>
-                    <td>DIRECCION</td>
-                </tr>
-                <tr>
-                    <th>Fecha de Nacimiento</th>
-                    <td>XX/XX/XXXX</td>
-                </tr>
-            </table>
-            <br>
-            <form action="editar-perfil.php">
-                <button class="boton_ingresar" type="submit">Editar</button> 
+            <form class="editar-perfil">
+                <table cellspacing="10" cellpadding="10" border="2">
+                    <tr>
+                        <th>Nombre</th>
+                        <td><input type="text" placeholder= "Nombre" name = "Nombre"  style="width : 71%; height: 20px"></td>
+                    </tr>
+                    <tr>
+                        <th>Rut</th>
+                        <td><input type="text" placeholder= "123456789" name = "Rut"  style="width : 71%; height: 20px"></td>
+                    </tr>
+                    <tr>
+                        <th>Correo</th>
+                        <td><input type="text" placeholder= "example@email.com" name = "Correo"  style="width : 71%; height: 20px"></td>
+                    </tr>
+                    <tr>
+                        <th>Fono</th>
+                        <td><input type="text" placeholder= "11223344" name = "Telefono"  style="width : 71%; height: 20px"></td>
+                    </tr>
+                    <tr>
+                        <th>Direccion</th>
+                        <td><input type="text" placeholder= "Direccion" name = "Direccion"  style="width : 71%; height: 20px"></td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de Nacimiento</th>
+                        <td><input type="text" placeholder= "XX/XX/XXXX" name = "Fecha de nacimiento"  style="width : 71%; height: 20px"></td>
+                    </tr>
+                </table>
+                <br>
+                <button class="boton_ingresar" type="submit">Guardar</button>
             </form>
             <br>
-            <form action="mantenedor.php">
-                <button class="boton_cancelar" type="submit">Regresar</button>
+            <form action="perfil.php">
+                <button class="boton_cancelar" type="submit">Cancelar</button>
             </form>
         </div>
     </div>
