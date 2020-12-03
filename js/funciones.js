@@ -92,13 +92,10 @@ $(document).ready( function () {
         })
     }
 
-    function editarEdificio(id_edificio){
-        window.location.href = `editar.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
-    }
-
     function detalleEdificio(id_edificio){
-        window.location.href = `detalle_edificio.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
+        window.location.href = `pagina_edificio.php?&id_edificio=${id_edificio}`
     }
+    
     function reporteEdificio(id_edificio){
         window.location.href = `../fpdf/pruebaPDF.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
     }
