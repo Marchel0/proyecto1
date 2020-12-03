@@ -40,7 +40,17 @@
         </ol>
     </nav>  
     <div class="contenedor">
+        
         <div class="aforo-permitido">
+            <?php
+                $consulta = "SELECT ultima_conexion FROM cuenta WHERE cuenta.rut_persona=$rut";
+                $resultado = mysqli_query($conexion,$consulta);
+                while($row=mysqli_fetch_assoc($resultado)){
+                    $info=$row['ultima_conexion'];
+                    echo "ULTIMA CONEXIÓN:<br>".$info;
+                }
+            ?>
+            <br>
             <h3>Aforo Permitido</h3>
             <form id="form-aforo">
                 <input id="input-aforo" type="text" placeholder="Aforo Permitido">
