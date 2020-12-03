@@ -52,7 +52,6 @@ $(document).ready( function () {
                 action: function(e,dt,node,config){
                     if(eliminarE()){
                         eliminarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
-                        tablaMantenedor.ajax.reload();
                     }
                 }
             },
@@ -87,7 +86,7 @@ $(document).ready( function () {
             data : { id_edificio },
             type: "POST",
             success: function(response){
-                
+                tablaMantenedor.ajax.reload();
             }
         })
     }
@@ -95,7 +94,7 @@ $(document).ready( function () {
     function detalleEdificio(id_edificio){
         window.location.href = `pagina_edificio.php?&id_edificio=${id_edificio}`
     }
-    
+
     function reporteEdificio(id_edificio){
         window.location.href = `../fpdf/pruebaPDF.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
     }
