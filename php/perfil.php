@@ -1,7 +1,10 @@
 <?php
     require("conexion.php");
-    $rut=$_GET['rut_persona'];
+    include("autorizacion.php");
+    $rut= $_SESSION['rut_persona'];
+    
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -42,31 +45,42 @@
             <h2>Datos Personales:</h2> 
             <br>
             <table cellspacing="10" cellpadding="10" border="2">
-                
-                <tr>
-                    <th>Nombre</th>
-                    <td>NOMBRE</td>
-                </tr>
-                <tr>
-                    <th>Rut</th>
-                    <td>RUT</td>
-                </tr>
-                <tr>
-                    <th>Correo</th>
-                    <td>CORREO</td>
-                </tr>
-                <tr>
-                    <th>Fono</th>
-                    <td>TELEFONO</td>
-                </tr>
-                <tr>
-                    <th>Direccion</th>
-                    <td>DIRECCION</td>
-                </tr>
-                <tr>
-                    <th>Fecha de Nacimiento</th>
-                    <td>XX/XX/XXXX</td>
-                </tr>
+                <?php
+                            $consulta = "SELECT * FROM cuenta, persona WHERE persona.rut_persona=cuenta.rut_persona and cuenta.rut_persona=$rut";
+                            $resultado = mysqli_query($conexion,$consulta);
+                            while($row=mysqli_fetch_assoc($resultado)){
+                                $nombre=$row['nombre_persona'];
+                                $rut=$row['rut_persona'];
+                                $correo=$row['correo'];
+                                $telefono=$row['telefono'];
+                                $direccion=$row['direccion'];
+                                $nacimiento=$row['fecha_nacimiento'];
+                                echo "<tr>";
+                                echo "<th>Nombre</th>";
+                                echo "<td>".$nombre."</td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<th>Rut</th>";
+                                echo "<td>".$rut."</td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<th>Correo</th>";
+                                echo "<td>".$correo."</td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<th>Fono</th>";
+                                echo "<td>".$telefono."</td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<th>Direccion</th>";
+                                echo "<td>".$direccion."</td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<th>Fecha de nacimiento</th>";
+                                echo "<td>".$nacimiento."</td>";
+                                echo "</tr>";
+                            }
+                ?>
             </table>
             <br>
             <form action="editar-perfil.php">
