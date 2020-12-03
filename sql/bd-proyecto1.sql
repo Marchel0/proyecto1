@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2020 a las 01:27:22
+-- Tiempo de generación: 03-12-2020 a las 04:21:08
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,7 +66,21 @@ CREATE TABLE `edificio` (
 
 INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `descripcion`, `aforo_permitido`) VALUES
 (1, 'San Agustin', 1000, '', 20),
-(2, 'Ezzati', 1000, '', 20);
+(2, 'Ezzati', 1000, '', 20),
+(3, 'San agustin', 100, '', 20),
+(4, 'pepe', 100, '', 20),
+(12, 'Ruca del Felipe', 100, '', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `max_desplazamiento`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `max_desplazamiento` (
+`id_edificio` int(11)
+,`prueba_max` bigint(21)
+);
 
 -- --------------------------------------------------------
 
@@ -77,7 +91,7 @@ INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `descri
 CREATE TABLE `oficina` (
   `id_oficina` int(11) NOT NULL,
   `id_edificio` int(11) NOT NULL,
-  `rut_persona` int(9) NOT NULL
+  `rut_persona` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -98,8 +112,21 @@ CREATE TABLE `permanecer` (
   `rut_persona` int(11) NOT NULL,
   `id_edificio` int(11) NOT NULL,
   `fecha_entrada` datetime NOT NULL,
-  `fecha_salida` datetime NOT NULL
+  `fecha_salida` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `permanecer`
+--
+
+INSERT INTO `permanecer` (`id_permanecer`, `rut_persona`, `id_edificio`, `fecha_entrada`, `fecha_salida`) VALUES
+(1, 112223334, 12, '2020-11-18 21:30:32', NULL),
+(2, 556667778, 12, '2020-11-18 21:55:59', NULL),
+(3, 11111111, 12, '2020-11-18 21:50:59', NULL),
+(4, 22222222, 2, '2020-11-18 18:51:32', NULL),
+(5, 33333333, 2, '2020-11-18 18:30:32', NULL),
+(6, 44444444, 12, '2020-11-18 10:00:00', NULL),
+(8, 12345678, 4, '2020-11-18 20:10:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,6 +144,11 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`rut_persona`, `nombre_persona`) VALUES
+(11111111, 'Pepe Lota'),
+(12345678, 'Jean Trozo'),
+(22222222, 'Pepe Tenis'),
+(33333333, 'Pepe Voley'),
+(44444444, 'Pepe Basket'),
 (112223334, 'Juan Perez'),
 (556667778, 'Rodolfo Rodriguez');
 
@@ -145,8 +177,18 @@ INSERT INTO `personal_oficina` (`rut_persona`) VALUES
 
 CREATE TABLE `personal_requerido` (
   `rut_persona` int(9) NOT NULL,
-  `rol_personal_requerido` enum('mantencion','seguridad','auxiliar de aseo','') COLLATE utf8_spanish2_ci NOT NULL
+  `rol_personal_requerido` enum('mantencion','seguridad','auxiliar de aseo','') COLLATE utf8_spanish2_ci NOT NULL,
+  `id_edificio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `max_desplazamiento`
+--
+DROP TABLE IF EXISTS `max_desplazamiento`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `max_desplazamiento`  AS  (select `max_f`.`id_edificio` AS `id_edificio`,max(`max_f`.`mayor_d`) AS `prueba_max` from (select count(`permanecer`.`fecha_entrada`) AS `mayor_d`,`permanecer`.`id_edificio` AS `id_edificio` from (`permanecer` join `edificio` on(`permanecer`.`id_edificio` = `edificio`.`id_edificio`)) group by hour(`permanecer`.`fecha_entrada`)) `max_f` group by `max_f`.`id_edificio` desc) ;
 
 --
 -- Índices para tablas volcadas
@@ -206,7 +248,7 @@ ALTER TABLE `personal_requerido`
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `oficina`
@@ -218,7 +260,7 @@ ALTER TABLE `oficina`
 -- AUTO_INCREMENT de la tabla `permanecer`
 --
 ALTER TABLE `permanecer`
-  MODIFY `id_permanecer` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permanecer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
