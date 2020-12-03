@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2020 a las 04:21:08
+-- Tiempo de generación: 03-12-2020 a las 14:07:23
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,16 +35,17 @@ CREATE TABLE `cuenta` (
   `direccion` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `tipo_cuenta` enum('alumno','administrador','docente','administrativa','invitado','auxiliar de aseo','mantencion') COLLATE utf8_spanish2_ci NOT NULL,
-  `codigo_qr` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+  `codigo_qr` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `ultima_conexion` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `cuenta`
 --
 
-INSERT INTO `cuenta` (`rut_persona`, `clave`, `correo`, `telefono`, `direccion`, `fecha_nacimiento`, `tipo_cuenta`, `codigo_qr`) VALUES
-(112223334, '1234', 'correo@correo.cl', 12345678, 'calle 1', '2020-11-28', 'administrador', '1'),
-(556667778, '1234', 'correo@correo.cl', 12345678, 'calle 2', '2020-11-28', 'alumno', '2');
+INSERT INTO `cuenta` (`rut_persona`, `clave`, `correo`, `telefono`, `direccion`, `fecha_nacimiento`, `tipo_cuenta`, `codigo_qr`, `ultima_conexion`) VALUES
+(112223334, '1234', 'correo@correo.cl', 12345678, 'calle 1', '2020-11-28', 'administrador', '1', NULL),
+(556667778, '1234', 'correo@correo.cl', 12345678, 'calle 2', '2020-11-28', 'alumno', '2', NULL);
 
 -- --------------------------------------------------------
 
@@ -65,11 +66,9 @@ CREATE TABLE `edificio` (
 --
 
 INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `descripcion`, `aforo_permitido`) VALUES
-(1, 'San Agustin', 1000, '', 20),
 (2, 'Ezzati', 1000, '', 20),
-(3, 'San agustin', 100, '', 20),
-(4, 'pepe', 100, '', 20),
-(12, 'Ruca del Felipe', 100, '', 20);
+(12, 'Ruca del Felipe', 100, '', 20),
+(14, 'PRUEBA', 10, '', 20);
 
 -- --------------------------------------------------------
 
@@ -126,7 +125,8 @@ INSERT INTO `permanecer` (`id_permanecer`, `rut_persona`, `id_edificio`, `fecha_
 (4, 22222222, 2, '2020-11-18 18:51:32', NULL),
 (5, 33333333, 2, '2020-11-18 18:30:32', NULL),
 (6, 44444444, 12, '2020-11-18 10:00:00', NULL),
-(8, 12345678, 4, '2020-11-18 20:10:00', NULL);
+(8, 12345678, 4, '2020-11-18 20:10:00', NULL),
+(9, 12345678, 14, '2020-11-18 20:57:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -180,6 +180,13 @@ CREATE TABLE `personal_requerido` (
   `rol_personal_requerido` enum('mantencion','seguridad','auxiliar de aseo','') COLLATE utf8_spanish2_ci NOT NULL,
   `id_edificio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `personal_requerido`
+--
+
+INSERT INTO `personal_requerido` (`rut_persona`, `rol_personal_requerido`, `id_edificio`) VALUES
+(12345678, 'auxiliar de aseo', 14);
 
 -- --------------------------------------------------------
 
@@ -238,7 +245,8 @@ ALTER TABLE `personal_oficina`
 -- Indices de la tabla `personal_requerido`
 --
 ALTER TABLE `personal_requerido`
-  ADD PRIMARY KEY (`rut_persona`);
+  ADD PRIMARY KEY (`rut_persona`),
+  ADD KEY `id_edificio` (`id_edificio`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -248,7 +256,7 @@ ALTER TABLE `personal_requerido`
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `oficina`
@@ -260,7 +268,7 @@ ALTER TABLE `oficina`
 -- AUTO_INCREMENT de la tabla `permanecer`
 --
 ALTER TABLE `permanecer`
-  MODIFY `id_permanecer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_permanecer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
@@ -283,8 +291,7 @@ ALTER TABLE `oficina`
 -- Filtros para la tabla `permanecer`
 --
 ALTER TABLE `permanecer`
-  ADD CONSTRAINT `permanecer_ibfk_1` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `permanecer_ibfk_2` FOREIGN KEY (`id_edificio`) REFERENCES `edificio` (`id_edificio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `permanecer_ibfk_1` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `personal_oficina`
@@ -296,7 +303,8 @@ ALTER TABLE `personal_oficina`
 -- Filtros para la tabla `personal_requerido`
 --
 ALTER TABLE `personal_requerido`
-  ADD CONSTRAINT `personal_requerido_ibfk_1` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `personal_requerido_ibfk_1` FOREIGN KEY (`rut_persona`) REFERENCES `persona` (`rut_persona`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `personal_requerido_ibfk_2` FOREIGN KEY (`id_edificio`) REFERENCES `edificio` (`id_edificio`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
