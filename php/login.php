@@ -17,7 +17,7 @@
                 </div>
                 <div class="campos"> 
                     <form class="ingresa" action="comprobador_login.php" method="POST" name="login">
-                    <input type="text" placeholder= "123456789" name = "rut"  style="width : 71%; height: 30px" required/>
+                    <input type="text" placeholder= "123456789" name = "rut_persona"  style="width : 71%; height: 30px" required/>
                     <br>
                     <br>
                     <input type="password" placeholder= "Contraseña" name = "clave" style="width : 71%; height : 30px" required />    

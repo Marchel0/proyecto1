@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION["rut_persona"])){
+    if(session_destroy()){
         header("Location: login.php");
     }
 ?>

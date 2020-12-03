@@ -1,6 +1,8 @@
 <?php
     require("conexion.php");
-    $rut=$_GET['rut_persona'];
+    include("autorizacion_administrador.php");
+    $rut= $_SESSION['rut_persona'];
+    
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +34,9 @@
 <body>
     <nav class="nav">
         <div class="nav-brand"><img src="../Imagenes/ucsc.png" alt=""></div>
-        <ol class="nav-links" id="nav-info">    
+        <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesion</button>
+        <ol class="nav-links" id="nav-info"> 
+            
         </ol>
     </nav>  
     <div class="contenedor">
