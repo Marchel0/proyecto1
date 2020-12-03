@@ -1,6 +1,7 @@
 <?php
     require("conexion.php");
-    $rut=$_GET['rut_persona'];
+    include("autorizacion.php");
+    $rut= $_SESSION['rut_persona'];
 ?>
 
 <!DOCTYPE html>
