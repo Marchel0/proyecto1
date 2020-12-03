@@ -74,7 +74,12 @@ $(document).ready( function () {
                     reporteEdificio()
                 }
             }
-          ]
+          ],
+          dom: 'Blfrtip',
+          lengthMenu: [
+              [1, 2, 3, -1],
+              ['10 Filas', '25 Filas', '50 Filas', 'Mostrar todo']
+          ],
     });
     
     $('#tabla-mantenedor tbody').on( 'click', 'tr', function () {
