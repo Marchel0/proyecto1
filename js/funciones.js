@@ -67,6 +67,12 @@ $(document).ready( function () {
                 action: function(e,dt,node,config){
                     detalleEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio)
                 }
+            },
+            {
+                text: 'Reporte',
+                action: function(e,dt,node,config){
+                    reporteEdificio()
+                }
             }
           ]
     });
@@ -92,6 +98,9 @@ $(document).ready( function () {
 
     function detalleEdificio(id_edificio){
         window.location.href = `detalle_edificio.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
+    }
+    function reporteEdificio(id_edificio){
+        window.location.href = `../fpdf/pruebaPDF.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
     }
 
     var tabla = $("#tabla").DataTable({
