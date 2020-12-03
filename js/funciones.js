@@ -52,6 +52,7 @@ $(document).ready( function () {
                 action: function(e,dt,node,config){
                     if(eliminarE()){
                         eliminarEdificio(tablaMantenedor.rows('.selected').data()[0].id_edificio);
+                        console.log(tablaMantenedor.rows('.selected').data()[0].id_edificio);
                     }
                 }
             },
