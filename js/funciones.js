@@ -148,7 +148,7 @@ function informacionUsuario(){
 
             datosCuenta.forEach(datosCuenta => {
                 template2 += 
-                `<li>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</li><br>
+                `<li><a href = 'perfil.php'>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</a></li><br>
                 <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesion</button>`
             });
 
@@ -198,6 +198,17 @@ function eliminarE(){
 }
 function editarE(){
     var respuesta = confirm('¿Está seguro que desea modificar este edificio?');
+
+    if(respuesta == true){
+        alert("Cambios guardados");
+        return true;
+    }else{
+        alert("Operación cancelada");
+        return false;
+    }
+}
+function editarP(){
+    var respuesta = confirm('¿Está seguro que desea modificar estos parámetros?');
 
     if(respuesta == true){
         alert("Cambios guardados");

@@ -41,39 +41,32 @@
             <br>
             <h2>Editar datos Personales:</h2> 
             <br>
-            <form class="editar-perfil">
+            <form action="editador-perfil.php" method="POST">
                 <table cellspacing="10" cellpadding="10" border="2">
                     <tr>
                         <th>Nombre</th>
-                        <td><input type="text" placeholder= "Nombre" name = "Nombre"  style="width : 71%; height: 20px"></td>
-                    </tr>
-                    <tr>
-                        <th>Rut</th>
-                        <td><input type="text" placeholder= "123456789" name = "Rut"  style="width : 71%; height: 20px"></td>
+                        <td><input type="text" placeholder= "Nombre" name = "nombre"  style="width : 71%; height: 20px"></td>
                     </tr>
                     <tr>
                         <th>Correo</th>
-                        <td><input type="text" placeholder= "example@email.com" name = "Correo"  style="width : 71%; height: 20px"></td>
+                        <td><input type="text" placeholder= "example@email.com" name = "correo"  style="width : 71%; height: 20px"></td>
                     </tr>
                     <tr>
                         <th>Fono</th>
-                        <td><input type="text" placeholder= "11223344" name = "Telefono"  style="width : 71%; height: 20px"></td>
+                        <td><input type="text" placeholder= "11223344" name = "telefono"  style="width : 71%; height: 20px"></td>
                     </tr>
                     <tr>
                         <th>Direccion</th>
-                        <td><input type="text" placeholder= "Direccion" name = "Direccion"  style="width : 71%; height: 20px"></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha de Nacimiento</th>
-                        <td><input type="text" placeholder= "XX/XX/XXXX" name = "Fecha de nacimiento"  style="width : 71%; height: 20px"></td>
+                        <td><input type="text" placeholder= "Direccion" name = "direccion"  style="width : 71%; height: 20px"></td>
                     </tr>
                 </table>
-                <br>
-                <button class="boton_ingresar" type="submit">Guardar</button>
+            <br>
+            <input type="hidden" name="rut_persona" value='<?php echo $rut; ?>' >
+                <button class="boton_ingresar" type="submit" onclick="return editarP()" >Agregar</button> 
             </form>
             <br>
             <form action="perfil.php">
-                <button class="boton_cancelar" type="submit">Cancelar</button>
+                <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
             </form>
         </div>
     </div>
