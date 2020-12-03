@@ -1,6 +1,6 @@
 <?php
     require("conexion.php");
-    include("autorizacion_administrador.php");
+    include("autorizacion.php");
     $rut= $_SESSION['rut_persona'];
     
 ?>
@@ -33,8 +33,8 @@
 
 <body>
     <nav class="nav">
+        <?php echo "<input type='hidden' id='rut_persona' value='$rut'>"?>
         <div class="nav-brand"><img src="../Imagenes/ucsc.png" alt=""></div>
-        <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesion</button>
         <ol class="nav-links" id="nav-info"> 
             
         </ol>

@@ -1,7 +1,4 @@
 $(document).ready( function () {
-    let valores = window.location.search;
-    let urlParams = new URLSearchParams(valores);
-    let rut_persona = urlParams.get('rut_persona');
     
     var tablaMantenedor = $('#tabla-mantenedor').DataTable({
         select: {
@@ -140,7 +137,7 @@ $(document).ready( function () {
 
 informacionUsuario();
 function informacionUsuario(){
-
+    let rut_persona = $('#rut_persona').val();
     $.ajax({
         url: "../php/informacion_cuenta.php",
         data: { rut_persona },
@@ -151,7 +148,8 @@ function informacionUsuario(){
 
             datosCuenta.forEach(datosCuenta => {
                 template2 += 
-                `<li>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</li>`
+                `<li>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</li><br>
+                <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesion</button>`
             });
 
             $('#nav-info').html(template2);
