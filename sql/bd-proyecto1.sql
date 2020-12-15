@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2020 a las 14:07:23
+-- Tiempo de generación: 16-12-2020 a las 00:56:38
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cuenta` (
   `rut_persona` int(9) NOT NULL,
-  `clave` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `clave` varchar(32) COLLATE utf8_spanish2_ci NOT NULL,
   `correo` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `telefono` int(9) NOT NULL,
   `direccion` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
@@ -44,7 +44,9 @@ CREATE TABLE `cuenta` (
 --
 
 INSERT INTO `cuenta` (`rut_persona`, `clave`, `correo`, `telefono`, `direccion`, `fecha_nacimiento`, `tipo_cuenta`, `codigo_qr`, `ultima_conexion`) VALUES
-(112223334, '1234', 'correo@correo.cl', 12345678, 'calle 1', '2020-11-28', 'administrador', '1', NULL),
+(112223334, '81dc9bdb52d04dc20036dbd8313ed055', 'correo@correo.cl', 12345678, 'calle 1', '2020-11-28', 'administrador', '1', '2020-12-16 00:22:17'),
+(123456780, '81dc9bdb52d04dc20036dbd8313ed055', 'hola@gmail.com', 123456789, 'mi casa', '2020-12-01', 'invitado', '3', '2020-12-16 00:17:40'),
+(123456789, '81dc9bdb52d04dc20036', 'hola@gmail.com', 123456789, 'hola', '2020-12-11', 'invitado', '3', NULL),
 (556667778, '1234', 'correo@correo.cl', 12345678, 'calle 2', '2020-11-28', 'alumno', '2', NULL);
 
 -- --------------------------------------------------------
@@ -58,17 +60,22 @@ CREATE TABLE `edificio` (
   `nombre_edificio` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `aforo_total` int(5) NOT NULL,
   `descripcion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `aforo_permitido` int(3) NOT NULL
+  `aforo_permitido` int(3) NOT NULL,
+  `fecha_ingreso` datetime NOT NULL DEFAULT current_timestamp(),
+  `fecha_modificacion` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `edificio`
 --
 
-INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `descripcion`, `aforo_permitido`) VALUES
-(2, 'Ezzati', 1000, '', 20),
-(12, 'Ruca del Felipe', 100, '', 20),
-(14, 'PRUEBA', 10, '', 20);
+INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `descripcion`, `aforo_permitido`, `fecha_ingreso`, `fecha_modificacion`) VALUES
+(2, 'Ezzati', 100, '', 20, '0000-00-00 00:00:00', NULL),
+(12, 'Ruca del Felipe', 100, '', 20, '0000-00-00 00:00:00', NULL),
+(14, 'PRUEBA', 10, '', 20, '2020-12-14 17:02:29', NULL),
+(15, 'San Agustin', 100, '', 20, '0000-00-00 00:00:00', NULL),
+(16, 'Central', 100, '', 20, '0000-00-00 00:00:00', NULL),
+(18, 'Central 2', 100, '', 20, '2020-12-14 17:02:16', '2020-12-14 20:46:54');
 
 -- --------------------------------------------------------
 
@@ -119,14 +126,20 @@ CREATE TABLE `permanecer` (
 --
 
 INSERT INTO `permanecer` (`id_permanecer`, `rut_persona`, `id_edificio`, `fecha_entrada`, `fecha_salida`) VALUES
-(1, 112223334, 12, '2020-11-18 21:30:32', NULL),
-(2, 556667778, 12, '2020-11-18 21:55:59', NULL),
-(3, 11111111, 12, '2020-11-18 21:50:59', NULL),
-(4, 22222222, 2, '2020-11-18 18:51:32', NULL),
-(5, 33333333, 2, '2020-11-18 18:30:32', NULL),
-(6, 44444444, 12, '2020-11-18 10:00:00', NULL),
-(8, 12345678, 4, '2020-11-18 20:10:00', NULL),
-(9, 12345678, 14, '2020-11-18 20:57:43', NULL);
+(48, 12345678, 14, '2020-12-10 15:18:26', '2020-12-10 15:24:27'),
+(49, 112223334, 14, '2020-12-10 15:23:38', '2020-12-10 15:23:43'),
+(50, 112223334, 14, '2020-12-10 15:23:49', '2020-12-10 15:24:15'),
+(51, 112223334, 14, '2020-12-10 15:24:21', '2020-12-10 15:25:32'),
+(52, 12345678, 14, '2020-12-10 15:24:33', NULL),
+(53, 44444444, 14, '2020-12-12 21:03:29', '2020-12-12 21:03:34'),
+(54, 44444444, 14, '2020-12-12 21:03:39', '2020-12-12 21:04:52'),
+(55, 44444444, 14, '2020-12-12 21:05:14', '2020-12-12 21:05:19'),
+(56, 112223334, 14, '2020-12-12 21:20:00', '2020-12-12 21:25:17'),
+(57, 112223334, 14, '2020-12-12 21:25:22', '2020-12-12 21:36:48'),
+(58, 112223334, 14, '2020-12-12 21:37:36', '2020-12-12 21:37:48'),
+(59, 112223334, 14, '2020-12-12 21:43:07', '2020-12-12 21:46:49'),
+(60, 112223334, 14, '2020-12-12 21:46:58', '2020-12-12 22:22:47'),
+(61, 112223334, 14, '2020-12-12 22:22:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -150,6 +163,8 @@ INSERT INTO `persona` (`rut_persona`, `nombre_persona`) VALUES
 (33333333, 'Pepe Voley'),
 (44444444, 'Pepe Basket'),
 (112223334, 'Juan Perez'),
+(123456780, 'Jean Perez'),
+(123456789, 'hola'),
 (556667778, 'Rodolfo Rodriguez');
 
 -- --------------------------------------------------------
@@ -256,7 +271,7 @@ ALTER TABLE `personal_requerido`
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `oficina`
@@ -268,7 +283,7 @@ ALTER TABLE `oficina`
 -- AUTO_INCREMENT de la tabla `permanecer`
 --
 ALTER TABLE `permanecer`
-  MODIFY `id_permanecer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_permanecer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Restricciones para tablas volcadas
