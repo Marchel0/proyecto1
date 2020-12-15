@@ -19,3 +19,13 @@ function validacion(){
     } 
 
 }
+
+let map;
+let aux1 = -36.79810;
+let aux2 = -73.05573;
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: aux1, lng: aux2 },
+    zoom: 17,
+  });
+}

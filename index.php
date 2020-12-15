@@ -17,7 +17,11 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
-        
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbEsbwt6jDg-QFFy8ASTZS5fmjj2jzabk&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>   
 </head>
 <body>
     <nav class="nav">
@@ -44,7 +48,10 @@
                     <th>Aforo Permitido</th>
                 </tr>
             </tfoot>
-            </table>    
+            </table>  
+            <br>    
+            <div id="map"></div>
+        </div>
     </div>
     <script type="text/javascript" src="js/funciones1.js"></script>  
 </body>
