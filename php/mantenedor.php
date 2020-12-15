@@ -111,8 +111,8 @@
             <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
         </form>
         </div>
-        
     </div>
     <script type="text/javascript" src="../js/funciones.js"></script>
+    <script src="../js/notificacion.js"></script>
 </body>
 </html>

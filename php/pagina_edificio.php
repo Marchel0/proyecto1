@@ -14,6 +14,8 @@ require("conexion.php");
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    
+
 </head>
 
 <body>
@@ -26,18 +28,15 @@ require("conexion.php");
         <div id="titulo">
 
         </div>
-        <div class="marcador">
-            <div id="actual">
+        <div class="content-info">
+            <div class="marcador" id="marcador">
 
             </div>
-            <div id="permitido">
-
+            <div class="marco-acceso">
+                <video id="lector"></video>
+                <div id="total-aforo">
             </div>
         </div>
-        <div class="marco-acceso">
-            <video id="lector"></video>
-            <div id="total-aforo">
-            </div>
         </div>
     </div>
     <script>
@@ -51,11 +50,11 @@ require("conexion.php");
             video: document.getElementById('lector')
         });
         scanner.addListener('scan', function(rut) {
-            comprobador(rut);
+            registrarPersona(rut);
         });
         Instascan.Camera.getCameras().then(cameras => {
             if (cameras.length > 0) {
-                scanner.start(cameras[0]);
+                scanner.start(cameras[2]);
             } else {
                 console.error("No se encontraron dispositivos!");
             }
@@ -72,11 +71,18 @@ require("conexion.php");
                 data: dato,
                 type: "POST",
                 success: function(response) {
-                    mostrarDatos();
-                    document.getElementById('acceso-confirmacion').style.backgroundColor = 'green';
-                    setTimeout(() => {
-                        document.getElementById('acceso-confirmacion').style.backgroundColor = 'white';
-                    }, 3000);
+                    if(response){
+                        document.getElementById('acceso-confirmacion').style.backgroundColor = 'green';
+                        setTimeout(() => {
+                            document.getElementById('acceso-confirmacion').style.backgroundColor = 'white';
+                            mostrarDatos();
+                        }, 2000);
+                    }else{
+                        document.getElementById('acceso-confirmacion').style.backgroundColor = 'red';
+                        setTimeout(() => {
+                            document.getElementById('acceso-confirmacion').style.backgroundColor = 'white';
+                        }, 2000);
+                    }
                 }
             })
         }
@@ -93,63 +99,29 @@ require("conexion.php");
                     let template = '';
                     let template2 = '';
                     let template3 = '';
-                    let template4 = '';
 
                     datos.forEach(datos => {
                         template +=
                             `<h1>${datos.nombre_edificio}</h1>`
                         template2 +=
-                            `<h4>Aforo Personas Actual</h4>
-                <h3>${datos.aforo_actual-datos.aforo_personal_actual}</h3>
-                <h4>Aforo Personal Actual</h4>
-                <h3>${datos.aforo_personal_actual}</h3>`
-                        template3 +=
-                            `<h4>Aforo Personas Permitido</h4>
-                <h3>${datos.aforo_permitido-datos.personal_edificio}</h4>
-                <h4>Aforo Personal Permitido</h4>
-                <h3>${datos.personal_edificio}</h3>`
+                            `<h3>Aforo Personas</h4>
+                <h2>${datos.aforo_actual-datos.aforo_personal_actual} / ${datos.aforo_permitido-datos.personal_edificio}</h2>
+                
+                <h3>Aforo Personal</h3>
+                <h2>${datos.aforo_personal_actual} / ${datos.personal_edificio}</h2>
+                <h3>Aforo Actual</h3>
+                <h2>${datos.aforo_actual} / ${datos.aforo_permitido}</h2>`
 
-                        template4 +=
-                            `<div class="marcador-datos"><h2>Aforo Actual</h2>
-                <h1>${datos.aforo_actual}</h1></div>
-                <div id="acceso-confirmacion">
-                </div>
-                <div class="marcador-datos"><h2>Aforo Permitido</h2>
-                <h1>${datos.aforo_permitido}</h1></div>`
+                        template3 +=
+                            ` <div id="acceso-confirmacion">
+                            </div>`
                     });
 
                     $('#titulo').html(template);
-                    $('#actual').html(template2);
-                    $('#permitido').html(template3);
-                    $('#total-aforo').html(template4);
+                    $('#marcador').html(template2);
+                    $('#total-aforo').html(template3);
                 }
             });
-        }
-
-        function comprobador(rut_persona) {
-            $.ajax({
-                url: "../php/datos_edificio.php",
-                data: {
-                    id_edificio
-                },
-                type: "POST",
-                success: function(response) {
-                    let datos = JSON.parse(response);
-
-                    datos.forEach(datos => {
-                        if (datos.aforo_actual < datos.aforo_permitido) {
-                            registrarPersona(rut_persona);
-                            mostrarDatos();
-                        } else {
-                            document.getElementById('acceso-confirmacion').style.backgroundColor = 'red';
-                            setTimeout(() => {
-                                document.getElementById('acceso-confirmacion').style.backgroundColor = 'white';
-                            }, 3000);
-                        }
-                    });
-                }
-            });
-
         }
     </script>
 </body>

@@ -8,15 +8,7 @@
 .marcador{
     width: 100%;
     text-align: center;
-    display: inline-flex;
-}
-
-#actual{
-    width: 50%;
-}
-
-#permitido{
-    width: 50%;
+    display: block
 }
 
 .marco-acceso{
@@ -44,6 +36,11 @@
     border-radius: 50%;
 }
 
+.content-info {
+    width: 100%;
+    display: inline-flex;
+}
+
 @media screen and (min-width: 768px){
 
     .body-content{
@@ -54,41 +51,31 @@
     }
     
     .marcador{
-        width: 100%;
+        width: 50%;
         text-align: center;
-        display: inline-flex;
-    }
-
-    #actual{
-        width: 50%;
-    }
-    
-    #permitido{
-        width: 50%;
     }
     
     .marco-acceso{
-        width: 100%;
+        width: 50%;
         text-align: center;
     }
     
     #acceso-confirmacion {
         background-color: white;
-        width: 50px;
-        height: 50px;
-        margin: 0;
-        margin-bottom: 5px;
+        width: 75px;
+        height: 75px;
         border-radius: 100%;
     }
 
     #titulo {
         width: 100%;
         text-align: center;
+        font-size: 30px;
     }
 
     #lector{
-        width: 250px;
-        height: 175px;
+        width: 300px;
+        height: 200px;
         border-radius: 45%;
     }
     
@@ -99,5 +86,16 @@
 
     .marcador-datos{
         width: 50%;
+    }
+
+    .content-info {
+        width: 100%;
+        display: inline-flex;
+        font-size: 30px;
+    }
+
+    .separador{
+        height: 25%;
+        width: 100%;
     }
 }

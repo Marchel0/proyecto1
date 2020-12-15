@@ -1,5 +1,12 @@
 $(document).ready( function () {
-    
+
+    setInterval(() => {
+       tablaMantenedor.ajax.reload();
+    }, 1000);
+    setInterval(() => {
+        tabla.ajax.reload();
+     }, 1000);
+
     var tablaMantenedor = $('#tabla-mantenedor').DataTable({
         select: {
             style: 'single'
@@ -20,6 +27,8 @@ $(document).ready( function () {
                 "visible": false
             }
         ],
+        rowId: 'id_edificio',
+        deferRender: true,
           dom: 'Bfrtip',
           buttons: [
               {
@@ -74,7 +83,7 @@ $(document).ready( function () {
           ],
           dom: 'Blfrtip',
           lengthMenu: [
-              [1, 2, 3, -1],
+              [10, 25, 50, -1],
               ['10 Filas', '25 Filas', '50 Filas', 'Mostrar todo']
           ],
     });

@@ -27,10 +27,12 @@
         $query = "SELECT COUNT(permanecer.rut_persona) as personal_oficina_actual FROM permanecer JOIN edificio USING(id_edificio) JOIN oficina USING(rut_persona) WHERE oficina.id_edificio = '$id_edificio' AND oficina.rut_persona is NOT null AND fecha_salida IS NULL";
         $personal_oficina_actual = mysqli_query($conexion, $query);
 
+        $aforo_permitido = $row['aforo_total']*($row['aforo_permitido']/100);
+        
         $json[] = array(
         'nombre_edificio' => $row['nombre_edificio'],
         'aforo_actual' => mysqli_fetch_array($aforo_actual)['aforo_actual'],
-        'aforo_permitido' => $row['aforo_total']*($row['aforo_permitido']/100),
+        'aforo_permitido' => $aforo_permitido,
         'personal_edificio' => mysqli_fetch_array($personal_edificio)['personal_edificio'],
         'aforo_personal_actual' => mysqli_fetch_array($personal_requerido_actual)['personal_requerido_actual']+ mysqli_fetch_array($personal_oficina_actual)['personal_oficina_actual']
 
