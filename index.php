@@ -21,7 +21,8 @@
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbEsbwt6jDg-QFFy8ASTZS5fmjj2jzabk&callback=initMap&libraries=&v=weekly"
       defer
-    ></script>   
+    ></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
 </head>
 <body>
     <nav class="nav">
@@ -32,7 +33,9 @@
         </ol>
     </nav>
     <div class="contenedor">
+        
         <div class="tabla-datos">
+            <div class="grafico"><canvas id="myChart"></canvas></div>
             <table id="tabla" class="display responsive nowrap" style="width:100%" >
             <thead>
                 <tr>

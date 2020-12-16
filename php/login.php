@@ -39,6 +39,10 @@
                     <button type = "submit" style="width : 73%; height: 45px; color:white; margin-top:15px; margin-bottom:30px; font-size:18px; background-color:red">Entrar</button>
                 </form>
                 <p>No estas registrado aún? <a href='registro.php'>Registrate Aquí</a></p>
+                <br>
+                <hr>
+                <br>
+                <a href="../index.php">Atras</a>
             </div>
 
         </div>
