@@ -14,9 +14,9 @@
             $_SESSION['rut_persona'] = $rut_persona;
             $tipo_cuenta = $row['tipo_cuenta'];
             
-      		if($tipo_cuenta == administrador){
+      		if($tipo_cuenta == "administrador"){
                 header("Location: mantenedor.php");
-            }else if ($tipo_cuenta == administrativa){
+            }else if ($tipo_cuenta == "administrativa"){
                 header("Location: ../index.php");
             }else{
                 header("Location: ../index.php");

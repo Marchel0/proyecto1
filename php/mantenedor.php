@@ -1,7 +1,6 @@
 <?php
     require("conexion.php");
     include("autorizacion_administrador.php");
-    session_start();
     $rut= $_SESSION['rut_persona'];
 ?>
 
