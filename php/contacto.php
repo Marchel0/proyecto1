@@ -1,5 +1,6 @@
 <?php
     require("conexion.php");
+
 ?>
 
 
@@ -41,12 +42,28 @@
             <br>
             <h1>Contacto:</h1>
             <form action="enviocontacto.php" method="POST">
-                    <p>Nombre:</p>
-                    <input type="text" name = "nombre"  style="width : 70%; height: 20px">
-                    <br>
-                    <p>Mail:</p>
-                    <input type="text" name = "email"  style="width : 70%; height: 20px">
-                    <br>
+                    <?php
+                        session_start();
+                        if(isset($_SESSION["rut_persona"])){
+                            $rut= $_SESSION['rut_persona'];
+                            $query = "SELECT * FROM cuenta, persona WHERE cuenta.rut_persona='$rut' and cuenta.rut_persona=persona.rut_persona";
+                            $result = mysqli_query($conexion, $query);
+                            while($row=mysqli_fetch_assoc($result)){
+                                $correo=$row['correo'];
+                                $nombre=$row['nombre_persona'];
+                                echo '<input type="hidden" name="email" value='.$correo.'>';
+                                echo '<input type="hidden" name="nombre" value='.$nombre.'>';
+                            }
+                        }else{
+                            echo '<p>Nombre:</p>';
+                            echo '<input type="text" name = "nombre"  style="width : 70%; height: 20px">';
+                            echo '<br>';
+                            echo '<p>Mail:</p>';
+                            echo '<input type="text" name = "email"  style="width : 70%; height: 20px">';
+                            echo '<br>';
+                        } 
+                        
+                    ?>
                     <p>Asunto:</p>
                     <input type="text" name = "mensaje"  style="width : 100%; height: 100px">
                     <br>
