@@ -72,7 +72,7 @@
                         
                     ?>
                     <p>Asunto:</p>
-                    <input type="text" name = "mensaje"  style="width : 100%; height: 100px">
+                    <textarea type="text" name = "mensaje"  style="width : 100%; height: 100px"></textarea>
                     <br>
                     <br>
                     <button class="boton_ingresar" type="submit">Enviar</button> 
