@@ -1,6 +1,5 @@
 <?php
     require("conexion.php");
-
 ?>
 
 
@@ -10,6 +9,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/ventana-emergente.css">
+    <link rel="stylesheet" href="../css/noticias.css">
     <title>Mantenedor</title>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -38,39 +38,27 @@
         </ol>
     </nav>  
     <div class="contenedor">
-        <div class="perfil">
+        <div class="noticias">
             <br>
+            <h1>Noticias</h1>
             <br>
-            <h1>Contacto:</h1>
-            <form action="enviocontacto.php" method="POST">
-                    <?php
-                        session_start();
-                        if(isset($_SESSION["rut_persona"])){
-                            $rut= $_SESSION['rut_persona'];
-                            $query = "SELECT * FROM cuenta, persona WHERE cuenta.rut_persona='$rut' and cuenta.rut_persona=persona.rut_persona";
-                            $result = mysqli_query($conexion, $query);
-                            while($row=mysqli_fetch_assoc($result)){
-                                $correo=$row['correo'];
-                                $nombre=$row['nombre_persona'];
-                                echo '<input type="hidden" name="email" value='.$correo.'>';
-                                echo '<input type="hidden" name="nombre" value='.$nombre.'>';
-                            }
-                        }else{
-                            echo '<p>Nombre:</p>';
-                            echo '<input type="text" name = "nombre"  style="width : 70%; height: 20px">';
-                            echo '<br>';
-                            echo '<p>Mail:</p>';
-                            echo '<input type="text" name = "email"  style="width : 70%; height: 20px">';
-                            echo '<br>';
-                        } 
-                        
-                    ?>
-                    <p>Asunto:</p>
-                    <input type="text" name = "mensaje"  style="width : 100%; height: 100px">
-                    <br>
-                    <br>
-                    <button class="boton_ingresar" type="submit">Enviar</button> 
-            </form>
+                <?php
+                include("simple_html_dom.php");
+            
+                $html = file_get_html("https://www.minsal.cl/");
+            
+                foreach($html->find("div.tarjeta") as $noticia)
+                {
+                    echo "<p>";
+                        echo "<a href='".$noticia->find("a",1)->href."'>".$noticia->find("a",1)->innertext."</a>";
+                        echo "<a href='".$noticia->find("a",1)->href."'>".$noticia->find("a",1)->innertext."</a>";
+                        echo "<br>";
+                        echo "<hr>";
+                        echo "<br>";
+                    echo "</p>";
+                }
+                ?>
+            <a href='https://www.minsal.cl/'>Fuente Minsal</a>
             <br>
             <form action="mantenedor.php">
                 <button class="boton_cancelar" type="submit">Regresar</button>
