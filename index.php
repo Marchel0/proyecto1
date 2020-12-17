@@ -29,7 +29,7 @@
     ></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
 </head>
-<body>
+<body id="prueba">
     <nav class="nav">
         <div class="nav-brand">
             <ul class="nav-menu-ul">

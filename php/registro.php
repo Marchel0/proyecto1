@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <title>Registro</title>
 </head>
-<body>
+<body id="prueba">
     <div class="body-login">
         <div class="contenedor-login">
             <div class="isesion">

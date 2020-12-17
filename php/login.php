@@ -34,7 +34,7 @@
       defer
     ></script>  
 </head>
-<body>
+<body id="prueba">
     <div class="body-login">
         <div class="contenedor-login">
             <div class="isesion">

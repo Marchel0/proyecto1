@@ -36,7 +36,7 @@
     ></script>      
 </head>
 
-<body>
+<body id="prueba">
     <nav class="nav">
         <div class="nav-brand">
             <ul class="nav-menu-ul">

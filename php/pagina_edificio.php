@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body id="prueba">
     <nav class="nav">
         <div class="nav-brand"><img src="../Imagenes/ucsc.png" alt=""></div>
         <ol class="nav-links">
