@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/ventana-emergente.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <title>Mantenedor</title>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -57,16 +58,7 @@
                 <br>
                 <button type="submit" class="boton_ingresar">Modificar</button>
             </form>
-            <br>
-            <h3>Tamaño Texto</h3>
-            <div class="tam-letras">
-            <button type="submit" class="disminuye" onclick="return disminuir()"><span class="material-icons">remove</span></button>
-            <button type="submit" class="aumenta" onclick="return aumentar()"><span class="material-icons">add</span></button>
-            </div>
-            <br>
-            <a target="_blank" href="https://hotelmix.es/weather/concepcion-6746">
-            <img src="https://w.bookcdn.com/weather/picture/31_6746_1_4_e74c3c_250_c0392b_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=582&anc_id=63677"  alt="booked.net"/></a><!-- weather widget end -->
-        
+            
         </div>
         <div class="tabla-datos">
             <table id="tabla-mantenedor" class="display responsive nowrap" style="width:100%" >
@@ -87,6 +79,29 @@
                 </tr>
             </tfoot>
             </table>
+            
+    <div class="footer">
+
+        <div class="cuadrado">
+            <div class="tam-letras" style="margin:20px;">
+                <p>Tamaño Texto</p>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="disminuye" onclick="return disminuir()"><span class="material-icons">remove</span></button>
+                <button type="submit" class="aumenta" onclick="return aumentar()"><span class="material-icons">add</span></button>
+            </div>
+        <br>
+            <div class="clima" style="margin:20px;">
+                <p>Clima durante el dia</p>
+                <br>
+                <hr>
+                <br>
+                <a target="_blank" href="https://hotelmix.es/weather/concepcion-6746">
+                <img src="https://w.bookcdn.com/weather/picture/31_6746_1_4_e74c3c_250_c0392b_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=582&anc_id=63677"  alt="booked.net"/></a><!-- weather widget end -->
+                    
+            </div>
+    </div>
         </div>
 
         <div class="añadir-edificio" id="agregar">
@@ -121,8 +136,11 @@
             <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
         </form>
         </div>
+        
     </div>
     <script type="text/javascript" src="../js/funciones.js"></script>
+    <script type="text/javascript" src="../js/funciones1.js"></script>
     <script src="../js/notificacion.js"></script>
+    
 </body>
 </html>

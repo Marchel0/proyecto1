@@ -3,9 +3,6 @@ $(document).ready( function () {
     setInterval(() => {
        tablaMantenedor.ajax.reload();
     }, 1000);
-    setInterval(() => {
-        tabla.ajax.reload();
-     }, 1000);
 
     var tablaMantenedor = $('#tabla-mantenedor').DataTable({
         select: {
