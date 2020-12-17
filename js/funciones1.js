@@ -40,9 +40,9 @@ function grafico(nombre,aforo,aforo_total){
         labels: nombre,
         datasets: [{
             barPercentage: 0.5,
-            barThickness: 6,
-            maxBarThickness: 8,
-            minBarLength: 2,
+            barThickness: 50,
+            maxBarThickness: 20,
+            minBarLength: 1,
             label: 'Aforo actual edificio',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: '#000',
@@ -52,15 +52,13 @@ function grafico(nombre,aforo,aforo_total){
 
         },{
           barPercentage: 0.5,
-          barThickness: 6,
-          maxBarThickness: 8,
-          minBarLength: 2,
+          barThickness: 50,
+          maxBarThickness: 20,
+          minBarLength: 1,
           label: 'Aforo total edificio',
           backgroundColor: 'rgb(235,59, 20)',
           borderColor: '#000',
           borderWidth: '100px',
-          maxBarThickness: 8,
-        minBarLength: 2,
           data: aforo_total
 
         }]
