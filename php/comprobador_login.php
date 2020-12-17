@@ -7,7 +7,7 @@
       	$clave = stripslashes($_REQUEST['clave']);
       	$clave = mysqli_real_escape_string($conexion,$clave);
         $query = "SELECT * FROM `cuenta` WHERE rut_persona='$rut_persona' and clave='".md5($clave)."'";
-        $result = mysqli_query($conexion,$query) or die(mysql_error());
+        $result = mysqli_query($conexion,$query);
         $rows = mysqli_num_rows($result);
         $row = mysqli_fetch_assoc($result);
         if($rows==1){

@@ -1,7 +1,8 @@
 .cuadrado{
-    display: inline-block;
+    display: flex;
     border: solid black;
     background-color:lightsalmon;
     bottom:0; 
+    width: 100%;
 
 }

@@ -4,11 +4,11 @@
     if(isset($_SESSION["rut_persona"])){
         $rut= $_SESSION['rut_persona'];
         $query = "SELECT tipo_cuenta FROM `cuenta` WHERE rut_persona='$rut'";
-        $result = mysqli_query($conexion,$query) or die(mysql_error());
-        $tipo_cuenta = mysqli_fetch_assoc($result);
-        if($tipo_cuenta == administrador){
+        $result = mysqli_query($conexion,$query);
+        $tipo_cuenta = mysqli_fetch_assoc($result)['tipo_cuenta'];
+        if($tipo_cuenta == "administrador"){
             header("Location: mantenedor.php");
-        }else if ($tipo_cuenta == administrativa){
+        }else if ($tipo_cuenta == "administrativa"){
             header("Location: ../index.php");
         }else{
             header("Location: ../index.php");
