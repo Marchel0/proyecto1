@@ -21,6 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/main.css">
+    <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
     <title>Login</title>
 </head>
 <body>
