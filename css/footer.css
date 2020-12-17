@@ -1,8 +1,19 @@
 .cuadrado{
     display: flex;
-    border: solid black;
-    background-color:lightsalmon;
-    bottom:0; 
-    width: 100%;
-
+    width: 75%;
+    margin: 0 auto;
+    padding-left: 15%;
+    text-align: center;
+}
+.ucscbottom{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    filter: grayscale(1);
+}
+.footer{
+    background-color: white;
+}
+.campus{
+    padding-right: 7%;
 }
