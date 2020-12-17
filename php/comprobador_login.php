@@ -24,5 +24,7 @@
         }else{
             header("Location: no_existe.php");
       	}
+    }else{
+        header("Location: login.php");
     }
 ?>

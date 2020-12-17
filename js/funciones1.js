@@ -30,7 +30,7 @@ function initMap() {
   });
 }
 
-function grafico(nombre,aforo){
+function grafico(nombre,aforo,aforo_total){
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx, {
     
@@ -43,10 +43,26 @@ function grafico(nombre,aforo){
             barThickness: 6,
             maxBarThickness: 8,
             minBarLength: 2,
-            label: 'Aforo actual edificios',
+            label: 'Aforo actual edificio',
             backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            borderColor: '#000',
+            borderWidth: '100px',
             data: aforo
+            
+
+        },{
+          barPercentage: 0.5,
+          barThickness: 6,
+          maxBarThickness: 8,
+          minBarLength: 2,
+          label: 'Aforo total edificio',
+          backgroundColor: 'rgb(235,59, 20)',
+          borderColor: '#000',
+          borderWidth: '100px',
+          maxBarThickness: 8,
+        minBarLength: 2,
+          data: aforo_total
+
         }]
     },
     // Configuration options go here
@@ -72,11 +88,13 @@ function informacionEdificio(){
             let datosEdificio = JSON.parse(response);
             var nombre = [];
             var aforo = [];
+            var aforo_total = [];
             datosEdificio.forEach(datosEdificio => {
                 nombre.push(datosEdificio.nombre_edificio);
                 aforo.push(datosEdificio.aforo_actual);
+                aforo_total.push(datosEdificio.aforo_total);
             });
-            grafico(nombre,aforo);
+            grafico(nombre,aforo,aforo_total);
         }
     });
 }

@@ -1,6 +1,9 @@
 <?php
     require("conexion.php");
-    include("autorizacion.php");
+    session_start();
+    if(!isset($_SESSION["rut_persona"])){
+        header("Location: login.php");
+    }
     $rut= $_SESSION['rut_persona'];
 ?>
 
@@ -11,9 +14,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/ventana-emergente.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <title>Mantenedor</title>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>Editar Perfil</title>
     <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
@@ -118,6 +119,6 @@
         <br>
         <br>
     </div>
-    <script type="text/javascript" src="../js/funciones.js"></script>
+    <script type="text/javascript" src="../js/funciones_perfil.js"></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 <?php
     require("php/conexion.php");
+    session_start();
+    if(isset($_SESSION["rut_persona"])){
+        header('location: php/login.php');
+     }
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +31,14 @@
 </head>
 <body>
     <nav class="nav">
-        <div class="nav-brand"><img src="Imagenes/ucsc.png" alt=""></div>
+        <div class="nav-brand">
+            <ul class="nav-menu-ul">
+                <li class="nav-menu-li"><img src="Imagenes/ucsc.png" alt=""></li>
+                <li class="nav-menu-li"><a href="index.php" class="boton-menu">Home</a></li>
+                <li class="nav-menu-li"><a href="php/contacto.php" class="boton-menu">Contacto</a></li>
+                <li class="nav-menu-li"><a href="php/noticias.php" class="boton-menu">Noticias</a></li>
+            </ul>
+        </div>
         <ol class="nav-links">    
             <button type="submit" class="boton_ingresar" onclick="window.location.href='php/login.php'">Login</button>
             <button type="submit" class="boton_ingresar" onclick="window.location.href='php/registro.php'" >registrar invitado</button>

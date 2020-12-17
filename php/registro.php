@@ -1,5 +1,9 @@
 <?php
     require("conexion.php");
+    session_start();
+    if(isset($_SESSION["rut_persona"])){
+        header('location: login.php');
+     }
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/main.css">
-    <title>Login</title>
+    <title>Registro</title>
 </head>
 <body>
     <div class="body-login">
@@ -40,6 +44,10 @@
                     <br>
                     <br>
                     <button type = "submit" style="width : 73%; height: 45px; color:white; margin-top:15px; margin-bottom:30px; font-size:18px; background-color:red">Registrarse</button>
+                    <br>
+                    <hr>
+                    <br>
+                    <a href="../index.php">Atras</a>
                 </form>
             </div>
 

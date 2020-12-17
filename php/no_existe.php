@@ -1,5 +1,9 @@
 <?php
     require("conexion.php");
+    session_start();
+    if(isset($_SESSION["rut_persona"])){
+        header('location: login.php');
+     }
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +19,6 @@
             <div class="isesion">
                 <h3>Usuario/Contraseña Incorrecto</h3>
                 <p>Haz click aquí para <a href='login.php'>Logearte</a></p>
-                </form>
             </div>
 
         </div>

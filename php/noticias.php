@@ -1,5 +1,6 @@
 <?php
     require("conexion.php");
+    session_start();
 ?>
 
 
@@ -11,9 +12,7 @@
     <link rel="stylesheet" href="../css/ventana-emergente.css">
     <link rel="stylesheet" href="../css/noticias.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <title>Mantenedor</title>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>Noticias</title>
     <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
@@ -39,7 +38,14 @@
 
 <body>
     <nav class="nav">
-        <div class="nav-brand"><img src="../Imagenes/ucsc.png" alt=""></div>
+        <div class="nav-brand">
+            <ul class="nav-menu-ul">
+                <li class="nav-menu-li"><img src="../Imagenes/ucsc.png" alt=""></li>
+                <li class="nav-menu-li"><a href="../index.php" class="boton-menu">Home</a></li>
+                <li class="nav-menu-li"><a href="contacto.php" class="boton-menu">Contacto</a></li>
+                <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Noticias</a></li>
+            </ul>
+        </div>
         <ol class="nav-links" id="nav-info">    
         </ol>
     </nav>  
@@ -66,9 +72,7 @@
                 ?>
             <a href='https://www.minsal.cl/'>Fuente Minsal</a>
             <br>
-            <form action="mantenedor.php">
-                <button class="boton_cancelar" type="submit">Regresar</button>
-            </form>
+            <button type="submit" class="boton_cancelar" onclick="window.location.href='../index.php'">Regresar</button>
         </div>
     </div>
     <div class="footer">
@@ -97,10 +101,22 @@
                 <button type="submit" class="aumenta" onclick="return aumentar()"><span class="material-icons">add</span></button>
                 <br>
                 <br>
+                <?php
+                    
+                    if(isset($_SESSION["rut_persona"])){
+                        $rut = $_SESSION["rut_persona"];
+                        $consulta = "SELECT ultima_conexion FROM cuenta WHERE cuenta.rut_persona=$rut";
+                        $resultado = mysqli_query($conexion,$consulta);
+                        while($row=mysqli_fetch_assoc($resultado)){
+                            $info=$row['ultima_conexion'];
+                        echo "ULTIMA CONEXIÓN:<br>".$info;
+                        }
+                    }
+                ?>
             </div>
         <br>
         <br>
     </div>
-    <script type="text/javascript" src="../js/funciones.js"></script>
+    <script type="text/javascript" src="../js/funciones_perfil.js"></script>
 </body>
 </html>

@@ -25,6 +25,7 @@ body{
     position: relative;
     padding: 5px;
     padding-bottom: 20px;
+    width: 700px;
 }
   
 .nav-brand img{
@@ -36,6 +37,7 @@ body{
     margin-top: 0;
     margin-left: 20px;
     list-style-type: none;
+    width: 200px;
 }
   
 .nav-links li{
@@ -43,10 +45,29 @@ body{
     opacity: 0.85;
     transition: opacity 150ms ease-in-out;
     padding-top: 15px;
+    float: left;
 }
   
 .nav-links li:hover{
     opacity: 1;
+}
+
+.nav-menu-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav-menu-ul li {
+    float: left;
+}
+.nav-menu-li a{
+    display: block;
+    color:black;
+    text-align: center;
+    padding: 30px;
+    text-decoration: none;
 }
 .editor{
     background-color: white;
@@ -66,7 +87,7 @@ body{
  
 .boton_ingresar{
     height: 20px;
-    width: 80px;
+    width: 100%;
     border-radius: 20px;
     border: 0;
     background-color: red;
@@ -95,6 +116,7 @@ body{
 .tabla-datos{
     margin-left: 210px;
     padding: 10px;
+    text-align: center;
 }
 
 .aforo-permitido{
@@ -122,6 +144,10 @@ body{
 a{
     text-decoration: none;
     color: black;
+}
+
+.boton-menu:hover{
+    background-color: rgba(0,0,0,0.1);
 }
 
 #map {
@@ -181,9 +207,13 @@ a{
     }
 
     .aforo-permitido{
-        padding-left: 3%;
+        text-align: center;
+        width: 200px;
+        padding-left: 40%;
+        padding-right: 40%;
         margin-left: 0;
     }
+    
 
     .añadir-edificio input{
         margin-top: 5px;

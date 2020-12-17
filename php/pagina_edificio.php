@@ -1,5 +1,8 @@
 <?php
-require("conexion.php");
+    require("conexion.php");
+    if (!isset($_GET['id_edificio'])){
+        header('location: login.php'); 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +15,7 @@ require("conexion.php");
     <title>Pagina Edificio</title>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     

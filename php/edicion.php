@@ -17,6 +17,5 @@
         $result = mysqli_query($conexion, $update);
     }
                 
-    header("Location: mantenedor.php?id_cuenta=$id_cuenta");
-
+    header("Location: mantenedor.php");
 ?>

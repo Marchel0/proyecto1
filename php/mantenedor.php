@@ -39,7 +39,14 @@
 <body id="prueba">
     <nav class="nav">
         <?php echo "<input type='hidden' id='rut_persona' value='$rut'>"?>
-        <div class="nav-brand"><img src="../Imagenes/ucsc.png" alt=""></div>
+        <div class="nav-brand">
+            <ul class="nav-menu-ul">
+                <li class="nav-menu-li"><img src="../Imagenes/ucsc.png" alt=""></li>
+                <li class="nav-menu-li"><a href="../index.php" class="boton-menu">Home</a></li>
+                <li class="nav-menu-li"><a href="contacto.php" class="boton-menu">Contacto</a></li>
+                <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Noticias</a></li>
+            </ul>
+        </div>
         <ol class="nav-links" id="nav-info"> 
             
         </ol>
