@@ -141,6 +141,5 @@
         <br>
     </div>
     <script type="text/javascript" src="../js/funciones_perfil.js"></script>
-    <script type="text/javascript" src="../js/funciones.js"></script>  
 </body>
 </html>

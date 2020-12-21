@@ -23,6 +23,5 @@
 
         </div>
     </div>
-    <script type="text/javascript" src="../js/funciones.js"></script>  
 </body>
 </html>
