@@ -1,6 +1,5 @@
 <?php
     require("conexion.php");
-    include("autorizacion_administrador.php");
     $rut= $_SESSION['rut_persona'];
 ?>
 
@@ -56,17 +55,7 @@
         
         <div class="tabla-datos">
             <div class="grafico"><canvas id="myChart"></canvas></div>
-            <div class="aforo-permitido">
-                <br>
-                <h3>Aforo Permitido</h3>
-                <form id="form-aforo">
-                <input id="input-aforo" type="text" placeholder="Aforo Permitido">
-                <br>
-                <button type="submit" class="boton_ingresar">Modificar</button>
-                </form>
-            
-            </div>
-            <table id="tabla-mantenedor" class="display responsive nowrap" style="width:100%" >
+            <table id="tabla-administrativa" class="display responsive nowrap" style="width:100%" >
             <thead>
                 <tr>
                     <th>Identificador</th>
@@ -85,40 +74,6 @@
             </tfoot>
             </table>
         </div>
-
-        <div class="añadir-edificio" id="agregar">
-        <h3>Añadir Edificio</h3>
-        <form action="agregar.php" method="POST" >
-            <input type="text" placeholder="Nombre Edificio" name="nombre_edificio">
-            <br>
-            <input type="text" placeholder="Aforo Edificio" name="aforo_total">
-            <br>
-            <input type="hidden" name="rut_persona" value='<?php echo $rut; ?>' >
-            <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
-            <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
-        </form>
-        </div>
-        
-        <div class="añadir-edificio" id="editar">
-        <h3>Editar Edificio</h3>
-        <div id="edicion_datos">
-        </div> 
-        <form action="edicion.php" method="POST" >
-            <input type="hidden" name="id_edificio" id="id_edificio" value="">
-            <tfoot>
-            <tr>
-            <td><input type="text" placeholder="Nombre Edificio" name="nombre_edificio"></td>
-            <td><input type="text" placeholder="Aforo Edificio" name="aforo_total"></td>
-            </tr>
-            </tfoot>
-            <br>
-            
-
-            <button class="boton_ingresar" type="submit" onclick="return confirmarE()" >Agregar</button> 
-            <button class="boton_cancelar" type="submit"  onclick="return cancelar()">Cancelar</button>
-        </form>
-        </div>
-        
     </div>
     <br>
     <br>
@@ -162,7 +117,7 @@
         <br>
         <br>
     </div>
-    <script type="text/javascript" src="../js/funciones.js"></script>
+    <script type="text/javascript" src="../js/funciones_administrativa.js"></script>
     <script src="../js/notificacion.js"></script>
     
 </body>

@@ -1,4 +1,3 @@
-let edificiosNotificados = [];
 let rut_persona = $("#rut_persona").val();
 
 function lanzar_notificacion(title, body, icon) {
