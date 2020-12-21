@@ -110,3 +110,24 @@ validar_cuenta();
 setInterval(() => {
     notificacion_aforo();
 }, 1000);
+
+let tamaño=100;
+function aumentar(){
+    if(tamaño<=130){
+        tamaño += 10;
+        document.getElementById('prueba').style.fontSize = tamaño +"%";
+    }
+    if(tamaño ==140){
+        alert("Tamaño maximo alcanzado");
+    }
+    
+}
+function disminuir(){
+    if(tamaño>=110){
+        tamaño -= 10;
+        document.getElementById('prueba').style.fontSize = tamaño +"%";
+    }
+    if(tamaño ==100){
+        alert("Tamaño minimo alcanzado");
+    }
+}
