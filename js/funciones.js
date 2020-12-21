@@ -227,11 +227,11 @@ function editarP(){
 
 let tamaño=100;
 function aumentar(){
-    if(tamaño<=150){
+    if(tamaño<=130){
         tamaño += 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño >=150){
+    if(tamaño ==140){
         alert("Tamaño maximo alcanzado");
     }
     
@@ -241,7 +241,7 @@ function disminuir(){
         tamaño -= 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño <=100){
+    if(tamaño ==100){
         alert("Tamaño minimo alcanzado");
     }
 }
