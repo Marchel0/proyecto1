@@ -1,10 +1,10 @@
 $(document).ready( function () {
 
     setInterval(() => {
-       tablaMantenedor.ajax.reload();
+       tablaAdministrativa.ajax.reload();
     }, 1000);
 
-    var tablaMantenedor = $('#tabla-administrativa').DataTable({
+    var tablaAdministrativa = $('#tabla-administrativa').DataTable({
         select: {
             style: 'single'
         },
@@ -42,61 +42,13 @@ $(document).ready( function () {
           ],
     });
     
-    $('#tabla-mantenedor tbody').on( 'click', 'tr', function () {
+    $('#tabla-administrativa tbody').on( 'click', 'tr', function () {
         $(this).toggleClass('selected');
     } );
-
-    function eliminarEdificio(id_edificio){
-        $.ajax({
-            url: "../php/eliminar.php",
-            data : { id_edificio },
-            type: "POST",
-            success: function(response){
-                tablaMantenedor.ajax.reload();
-            }
-        })
-    }
-
-    function detalleEdificio(id_edificio){
-        window.location.href = `pagina_edificio.php?&id_edificio=${id_edificio}`
-    }
 
     function reporteEdificio(id_edificio){
         window.location.href = `../fpdf/pruebaPDF.php?rut_persona=${rut_persona}&id_edificio=${id_edificio}`
     }
-
-    var tabla = $("#tabla").DataTable({
-        ajax: {
-          url: "php/lista-edificios.php",
-          dataSrc: "",
-        },
-        columns: [
-          { data: "nombre_edificio" },
-          { data: "aforo_actual" },
-          { data: "aforo_total" },
-        ],
-      });
-
-    $('#form-aforo').submit(function(e) {
-        e.preventDefault();
-        var datos = {
-            "aforo_permitido":$("#input-aforo").val(),
-        }
-        console.log(datos);
-        $.ajax({
-            url: "../php/actualizar_aforo.php",
-            data: datos,
-            type: "POST",
-            success: function(response){
-                if(response){
-                    alert("El Valor debe ser entre 0 y 100");
-                }else{
-                    tablaMantenedor.ajax.reload();
-                    $('#form-aforo').trigger('reset');
-                }
-            }
-        })
-    });
 
 informacionUsuario();
 function informacionUsuario(){
@@ -153,28 +105,6 @@ function eliminarE(){
 
     if(respuesta == true){
         alert("Registro del edificio eliminado con éxito");
-        return true;
-    }else{
-        alert("Operación cancelada");
-        return false;
-    }
-}
-function editarE(){
-    var respuesta = confirm('¿Está seguro que desea modificar este edificio?');
-
-    if(respuesta == true){
-        alert("Cambios guardados");
-        return true;
-    }else{
-        alert("Operación cancelada");
-        return false;
-    }
-}
-function editarP(){
-    var respuesta = confirm('¿Está seguro que desea modificar estos parámetros?');
-
-    if(respuesta == true){
-        alert("Cambios guardados");
         return true;
     }else{
         alert("Operación cancelada");
