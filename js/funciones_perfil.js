@@ -267,7 +267,7 @@ function aumentar(){
     
 }
 function disminuir(){
-    if(tamaño>=100){
+    if(tamaño>=110){
         tamaño -= 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
