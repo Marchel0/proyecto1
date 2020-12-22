@@ -44,6 +44,7 @@
                 <li class="nav-menu-li"><a href="../index.php" class="boton-menu">Home</a></li>
                 <li class="nav-menu-li"><a href="contacto.php" class="boton-menu">Contacto</a></li>
                 <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Noticias</a></li>
+                <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Mapa</a></li>
             </ul>
         </div>
         <ol class="nav-links" id="nav-info">    
@@ -53,28 +54,43 @@
         <div class="noticias">
             <br>
             <h1>Noticias</h1>
-            <br>
+            <br> 
                 <?php
                 include("simple_html_dom.php");
             
                 $html = file_get_html("https://www.minsal.cl/");
-            
+                $images_array = array();
+                foreach($html->find('div.tarjeta a img') as $element) {
+                    $img = $element->getAttribute('src');
+                    array_push($images_array, $img);
+                }
+                $i = 0;
                 foreach($html->find("div.tarjeta") as $noticia)
                 {
-                    echo "<p>";
-                        echo "<a href='".$noticia->find("a",1)->href."'>".$noticia->find("a",1)->innertext."</a>";
-                        echo "<a href='".$noticia->find("a",1)->href."'>".$noticia->find("a",1)->innertext."</a>";
-                        echo "<br>";
-                        echo "<hr>";
-                        echo "<br>";
-                    echo "</p>";
+                    echo "<div class='rectangulo-noticia'>";
+                    echo "<div class='imagen-noticia'>";
+                    echo "<img src='".$images_array[$i]."'>";
+                    echo "</div>";
+                    echo "<a href='".$noticia->find("a",1)->href."'>".$noticia->find("a",1)->innertext."</a>";
+                    echo "</div>";
+                    echo "<br>";  
+                    echo "<br>";      
+                    echo "<hr>";
+                    echo "<br>";    
+                    $i = $i + 1;
                 }
                 ?>
             <a href='https://www.minsal.cl/'>Fuente Minsal</a>
             <br>
+            <br>
             <button type="submit" class="boton_cancelar" onclick="window.location.href='../index.php'">Regresar</button>
         </div>
+        <br>
+        <br>
     </div>
+    <br>
+    <br>
+    <br>
     <div class="footer">
         <br>    
         <br>

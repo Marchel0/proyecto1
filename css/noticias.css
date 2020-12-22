@@ -2,7 +2,17 @@
     background-color: white;
     text-align: center;
     padding: 10px  7% 7% ;
-    margin-left: 32px;
+    margin-left: 25%;
     border-radius: 5%;
     box-shadow: 2px 2px 2px 2px black;
+}
+.rectangulo-noticia{
+    background-color: lightgray;
+    box-shadow: 2px 2px 2px 2px black;
+    display: block;
+    list-style-type: none;
+    display: inline-block;
+}
+.rectangulo-noticia a{
+    top: 0;
 }
