@@ -146,6 +146,7 @@ $forecast = $data->results->seven_day_forecast;
             <br>
             <div class="clima" style="margin:10px;">
             <p class="weather-icon">
+            <h3 class="title text-center bordered"><?php echo $current->city.' ('.$current->country.')';?></h3>
               <img  src="<?php echo $current->image;?>">
               <br>
               <?php if ($current->description = "Mostly clear"){

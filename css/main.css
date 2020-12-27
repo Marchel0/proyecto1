@@ -66,8 +66,11 @@ body{
     display: block;
     color:black;
     text-align: center;
-    padding: 30px;
+    padding: 25px;
     text-decoration: none;
+}
+.botones{
+    margin-bottom: 10px;
 }
 .editor{
     background-color: white;
@@ -181,7 +184,7 @@ a{
     /* Barra navegacion */
     .nav{
         top: 0;
-        height: 80px;
+        height: 90px;
         width: 100%;
     }
 

@@ -241,7 +241,7 @@ function aumentar(){
         tamaño += 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño ==140){
+    else if(tamaño ==140){
         alert("Tamaño maximo alcanzado");
     }
     
@@ -251,7 +251,7 @@ function disminuir(){
         tamaño -= 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño ==100){
+    else if(tamaño ==100){
         alert("Tamaño minimo alcanzado");
     }
 }

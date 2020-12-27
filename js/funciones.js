@@ -155,7 +155,7 @@ function informacionUsuario(){
             datosCuenta.forEach(datosCuenta => {
                 template2 += 
                 `<li><a href = 'perfil.php'>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</a></li><br>
-                <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesion</button>`
+                <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesión</button>`
             });
 
             $('#nav-info').html(template2);
@@ -231,7 +231,7 @@ function aumentar(){
         tamaño += 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño ==140){
+    else if(tamaño ==140){
         alert("Tamaño maximo alcanzado");
     }
     
@@ -241,7 +241,7 @@ function disminuir(){
         tamaño -= 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño ==100){
+    else if(tamaño ==100){
         alert("Tamaño minimo alcanzado");
     }
 }

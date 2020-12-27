@@ -90,7 +90,7 @@ function aumentar(){
         tamaño += 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño >=150){
+    else if(tamaño >=150){
         alert("Tamaño maximo alcanzado");
     }
     
@@ -100,7 +100,7 @@ function disminuir(){
         tamaño -= 10;
         document.getElementById('prueba').style.fontSize = tamaño +"%";
     }
-    if(tamaño <=100){
+    else if(tamaño <=100){
         alert("Tamaño minimo alcanzado");
     }
 }
