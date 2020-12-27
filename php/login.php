@@ -105,6 +105,7 @@ $forecast = $data->results->seven_day_forecast;
             <div class="clima" style="margin:10px;">
             <p class="weather-icon">
               <img  src="<?php echo $current->image;?>">
+              <br>
               <?php if ($current->description = "Mostly clear"){
                  echo "Mayormente despejado";
                }
@@ -125,7 +126,9 @@ $forecast = $data->results->seven_day_forecast;
             </p>
             <br>
             <div class="weather-icon">
-              <p><strong>Velocidad del Viento : </strong><?php echo $current->windspeed;?> <?php echo $current->windspeed_unit;?></p>
+              <p><strong>Velocidad del Viento : </strong>
+              <br>
+              <?php echo $current->windspeed;?> <?php echo $current->windspeed_unit;?></p>
             </div>
             </div>
             <div class="tam-letras" style="margin:20px;">
