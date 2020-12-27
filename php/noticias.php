@@ -2,7 +2,33 @@
     require("conexion.php");
     session_start();
 ?>
+<?php
+$cache_file = 'data.json';
+if(file_exists($cache_file)){
+  $data = json_decode(file_get_contents($cache_file));
+}else{
+  $api_url = 'https://content.api.nytimes.com/svc/weather/v2/current-and-seven-day-forecast.json';
+  $data = file_get_contents($api_url);
+  file_put_contents($cache_file, $data);
+  $data = json_decode($data);
+}
 
+$current = $data->results->current[0];
+$forecast = $data->results->seven_day_forecast;
+
+?>
+
+
+<?php
+  function convert2cen($value,$unit){
+    if($unit=='C'){
+      return $value;
+    }else if($unit=='F'){
+      $cen = ($value - 32) / 1.8;
+      	return round($cen,2);
+      }
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -106,9 +132,31 @@
             </div>
             <div id="map" style="padding-left:20px;"    ></div>
             <br>
-            <div class="clima" style="margin:20px;">
-                <a target="_blank" href="https://hotelmix.es/weather/concepcion-6746">
-                <img src="https://w.bookcdn.com/weather/picture/31_6746_1_4_e74c3c_250_c0392b_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=582&anc_id=63677"  alt="booked.net"/></a><!-- weather widget end -->
+            <div class="clima" style="margin:10px;">
+            <p class="weather-icon">
+              <img  src="<?php echo $current->image;?>">
+              <?php if ($current->description = "Mostly clear"){
+                 echo "Mayormente despejado";
+               }
+               else if ($current->description = "Mostly sunny and beautiful"||"Mostly sunny and nice" || "Delightful with plenty of sun"){
+                  echo "Mayormente soleado";
+               }
+               else if ($current->description = "partial sunshine"){
+               echo "Parcialmente soleado";
+               }
+               else if ($current->description = "Clear"){
+                  echo "Despejado";
+                  }
+                  else if ($current->description = "A stray shower in the morning"){
+                    echo "Parcialmente lluvioso";
+                    }
+              
+              ?>
+            </p>
+            <br>
+            <div class="weather-icon">
+              <p><strong>Velocidad del Viento : </strong><?php echo $current->windspeed;?> <?php echo $current->windspeed_unit;?></p>
+            </div>
             </div>
             <div class="tam-letras" style="margin:20px;">
                 <p>Tamaño Texto</p>
