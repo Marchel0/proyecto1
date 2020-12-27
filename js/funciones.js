@@ -259,14 +259,12 @@ function grafico(nombre,aforo,aforo_total){
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
       
-      type: 'bar',
+      type: 'horizontalBar',
   
       data: {
           labels: nombre,
           datasets: [{
               barPercentage: 0.5,
-              barThickness: 50,
-              maxBarThickness: 20,
               minBarLength: 1,
               label: 'Aforo actual edificio',
               backgroundColor: 'rgb(255, 99, 132)',
@@ -277,8 +275,6 @@ function grafico(nombre,aforo,aforo_total){
   
           },{
             barPercentage: 0.5,
-            barThickness: 50,
-            maxBarThickness: 20,
             minBarLength: 1,
             label: 'Aforo total edificio',
             backgroundColor: 'rgb(235,59, 20)',
