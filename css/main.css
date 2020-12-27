@@ -168,6 +168,12 @@ a{
 .opciones-mapa{
     margin-left: 50px;
 }
+
+div.opciones-mapa{
+    width: 200px;
+    height: 700px;
+    overflow: auto;
+}
 .opciones-mapa-ul {
     list-style-type: none;
     margin: 0;
