@@ -146,10 +146,11 @@ function informacionMapaEdificio(){
         success: function(response){
             let datosEdificio = JSON.parse(response);
             let template2 = '';
-
+            let aux =1;
             datosEdificio.forEach(datosEdificio => {
                 template2 += 
-                `<li class="nombre-edificios" id="${datosEdificio.id_edificio}">${datosEdificio.nombre_edificio}</li>`;
+                `<li class="nombre-edificios" id="${datosEdificio.id_edificio}">${aux}.- ${datosEdificio.nombre_edificio}</li>`;
+                aux++;
             });
 
             $('.opciones-mapa-ul').html(template2);
