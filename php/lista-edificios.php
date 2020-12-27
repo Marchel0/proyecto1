@@ -2,7 +2,7 @@
 
     require("conexion.php");
 
-    $query = "SELECT id_edificio, nombre_edificio, aforo_total, aforo_permitido FROM edificio";
+    $query = "SELECT id_edificio, nombre_edificio, aforo_total, aforo_permitido, latitud, longitud FROM edificio";
 
     $result = mysqli_query($conexion, $query);
   
@@ -20,8 +20,11 @@
         $json[] = array(
         'id_edificio' => $row['id_edificio'],
         'nombre_edificio' => $row['nombre_edificio'],
+        'latitud' => $row['latitud'],
+        'longitud' => $row['longitud'],
         'aforo_actual' => mysqli_fetch_array($aforo_total)['aforo_actual'],
-        'aforo_total' => $row['aforo_total']*($row['aforo_permitido']/100)
+        'aforo_total' => $row['aforo_total']*($row['aforo_permitido']/100),
+        
     );
   }
   $jsonstring = json_encode($json);

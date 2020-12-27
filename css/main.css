@@ -154,6 +154,28 @@ a{
     height: 300px;
     width: 400px;
   }
+
+.mapa{
+    margin-left: 200px;
+    float: right;
+    height: 700px!important;
+    width: 50%!important;
+}
+
+.opciones-mapa{
+    margin-left: 50px;
+}
+.opciones-mapa-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.opciones-mapa-ul li{
+    padding-top: 20px;
+    cursor: pointer;
+}
 /* Escritorio */
 @media screen and (min-width: 768px){
     /* Barra navegacion */
