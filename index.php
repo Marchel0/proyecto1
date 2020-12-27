@@ -115,25 +115,10 @@ $forecast = $data->results->seven_day_forecast;
             <div class="clima" style="margin:10px;">
             <p class="weather-icon">
             <h3 class="title text-center bordered"><?php echo $current->city.' ('.$current->country.')';?></h3>
+            <br>
+              <p class="aqi-value"><?php echo convert2cen($current->temp,$current->temp_unit);?> °C</p>
               <img  src="<?php echo $current->image;?>">
               <br>
-              <?php if ($current->description = "Mostly clear"){
-                 echo "Mayormente despejado";
-               }
-               else if ($current->description = "Mostly sunny and beautiful"||"Mostly sunny and nice" || "Delightful with plenty of sun"){
-                  echo "Mayormente soleado";
-               }
-               else if ($current->description = "partial sunshine"){
-               echo "Parcialmente soleado";
-               }
-               else if ($current->description = "Clear"){
-                  echo "Despejado";
-                  }
-                  else if ($current->description = "A stray shower in the morning"){
-                    echo "Parcialmente lluvioso";
-                    }
-              
-              ?>
             </p>
             <br>
             <div class="weather-icon">
