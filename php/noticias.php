@@ -1,6 +1,9 @@
 <?php
     require("conexion.php");
     session_start();
+    if(isset($_SESSION["rut_persona"])){
+        $rut= $_SESSION['rut_persona'];
+    }
 ?>
 <?php
 $cache_file = 'data.json';
@@ -64,16 +67,21 @@ $forecast = $data->results->seven_day_forecast;
 
 <body id="prueba">
     <nav class="nav">
+        <?php  
+            if(isset($_SESSION["rut_persona"])){
+                echo "<input type='hidden' id='rut_persona' value='$rut'>";
+            }
+        ?>
         <div class="nav-brand">
             <ul class="nav-menu-ul">
                 <li class="nav-menu-li"><img src="../Imagenes/ucsc.png" alt=""></li>
                 <li class="nav-menu-li"><a href="../index.php" class="boton-menu">Home</a></li>
                 <li class="nav-menu-li"><a href="contacto.php" class="boton-menu">Contacto</a></li>
                 <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Noticias</a></li>
-                <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Mapa</a></li>
+                <li class="nav-menu-li"><a href="mapa.php" class="boton-menu">Mapa</a></li>
             </ul>
         </div>
-        <ol class="nav-links" id="nav-info">    
+        <ol class="nav-links" id="nav-info"> 
         </ol>
     </nav>  
     <div class="contenedor">
@@ -157,7 +165,6 @@ $forecast = $data->results->seven_day_forecast;
                 <?php
                     
                     if(isset($_SESSION["rut_persona"])){
-                        $rut = $_SESSION["rut_persona"];
                         $consulta = "SELECT ultima_conexion FROM cuenta WHERE cuenta.rut_persona=$rut";
                         $resultado = mysqli_query($conexion,$consulta);
                         while($row=mysqli_fetch_assoc($resultado)){

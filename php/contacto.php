@@ -1,5 +1,10 @@
 <?php
     require("conexion.php");
+    session_start();
+    if(isset($_SESSION["rut_persona"])){
+        $rut= $_SESSION['rut_persona'];
+    }
+    
 ?>
 <?php
 $cache_file = 'data.json';
@@ -14,7 +19,6 @@ if(file_exists($cache_file)){
 
 $current = $data->results->current[0];
 $forecast = $data->results->seven_day_forecast;
-
 ?>
 
 
@@ -53,16 +57,22 @@ $forecast = $data->results->seven_day_forecast;
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbEsbwt6jDg-QFFy8ASTZS5fmjj2jzabk&callback=initMap&libraries=&v=weekly"
       defer
     ></script> 
+    <script type="text/javascript" src="../js/funciones_perfil.js"></script>
 </head>
 
 <body id="prueba">
     <nav class="nav">
+        <?php  
+            if(isset($_SESSION["rut_persona"])){
+                echo "<input type='hidden' id='rut_persona' value='$rut'>";
+            }?>
         <div class="nav-brand">
             <ul class="nav-menu-ul">
                 <li class="nav-menu-li"><img src="../Imagenes/ucsc.png" alt=""></li>
                 <li class="nav-menu-li"><a href="../index.php" class="boton-menu">Home</a></li>
                 <li class="nav-menu-li"><a href="contacto.php" class="boton-menu">Contacto</a></li>
                 <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Noticias</a></li>
+                <li class="nav-menu-li"><a href="mapa.php" class="boton-menu">Mapa</a></li>
             </ul>
         </div>
         <ol class="nav-links" id="nav-info"> 
@@ -76,9 +86,8 @@ $forecast = $data->results->seven_day_forecast;
             <h1>Contacto:</h1>
             <form action="enviocontacto.php" method="POST">
                     <?php
-                        session_start();
+
                         if(isset($_SESSION["rut_persona"])){
-                            $rut= $_SESSION['rut_persona'];
                             $query = "SELECT * FROM cuenta, persona WHERE cuenta.rut_persona='$rut' and cuenta.rut_persona=persona.rut_persona";
                             $result = mysqli_query($conexion, $query);
                             while($row=mysqli_fetch_assoc($result)){
@@ -161,7 +170,5 @@ $forecast = $data->results->seven_day_forecast;
         <br>
         <br>
     </div>
-    <script type="text/javascript" src="../js/funciones_perfil.js"></script>
 </body>
 </html>
-/
