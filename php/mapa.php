@@ -125,6 +125,17 @@ $forecast = $data->results->seven_day_forecast;
             </div>
         <br>
         <br>
+        <?php
+                if(isset($_SESSION["rut_persona"])){
+                  $consulta = "SELECT ultima_conexion FROM cuenta WHERE cuenta.rut_persona=$rut";
+                    $resultado = mysqli_query($conexion,$consulta);
+                    while($row=mysqli_fetch_assoc($resultado)){
+                        $info=$row['ultima_conexion'];
+                        echo "ULTIMA CONEXIÓN:<br>".$info;
+                    }
+                }
+                    
+                ?>
     </div> 
 </body>
 </html>

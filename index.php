@@ -2,8 +2,16 @@
     require("php/conexion.php");
     session_start();
     if(isset($_SESSION["rut_persona"])){
-        header('location: php/login.php');
-     }
+      $rut= $_SESSION['rut_persona'];
+      $query = "SELECT tipo_cuenta FROM `cuenta` WHERE rut_persona='$rut'";
+      $result = mysqli_query($conexion,$query);
+      $tipo_cuenta = mysqli_fetch_assoc($result)['tipo_cuenta'];
+      if($tipo_cuenta == "administrador"){
+          header("Location: mantenedor.php");
+      }else if ($tipo_cuenta == "administrativa"){
+          header("Location: ../index.php");
+      }
+  }
 ?>
 <?php
 $cache_file = 'data.json';
@@ -59,6 +67,10 @@ $forecast = $data->results->seven_day_forecast;
 </head>
 <body id="prueba">
     <nav class="nav">
+        <?php  
+            if(isset($_SESSION["rut_persona"])){
+                echo "<input type='hidden' id='rut_persona' value='$rut'>";
+            }?>
         <div class="nav-brand">
             <ul class="nav-menu-ul">
                 <li class="nav-menu-li"><img src="Imagenes/ucsc.png" alt=""></li>
@@ -68,9 +80,7 @@ $forecast = $data->results->seven_day_forecast;
                 <li class="nav-menu-li"><a href="php/mapa.php" class="boton-menu">Mapa</a></li>
             </ul>
         </div>
-        <ol class="nav-links">    
-            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/login.php'">Login</button>
-            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/registro.php'" >Registrar invitado</button>
+        <ol class="nav-links" id="nav-info">    
         </ol>
     </nav>
     <div class="contenedor">
@@ -134,6 +144,17 @@ $forecast = $data->results->seven_day_forecast;
                 <button type="submit" class="aumenta" onclick="return aumentar()"><span class="material-icons">add</span></button>
                 <br>
                 <br>
+                <?php
+                if(isset($_SESSION["rut_persona"])){
+                  $consulta = "SELECT ultima_conexion FROM cuenta WHERE cuenta.rut_persona=$rut";
+                    $resultado = mysqli_query($conexion,$consulta);
+                    while($row=mysqli_fetch_assoc($resultado)){
+                        $info=$row['ultima_conexion'];
+                        echo "ULTIMA CONEXIÓN:<br>".$info;
+                    }
+                }
+                    
+                ?>
             </div>
         <br>
         <br>

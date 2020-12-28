@@ -57,7 +57,7 @@ $forecast = $data->results->seven_day_forecast;
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbEsbwt6jDg-QFFy8ASTZS5fmjj2jzabk&callback=initMap&libraries=&v=weekly"
       defer
     ></script> 
-    <script type="text/javascript" src="../js/funciones_perfil.js"></script>
+    <script type="text/javascript" src="../js/funciones2.js"></script>
 </head>
 
 <body id="prueba">
@@ -169,6 +169,17 @@ $forecast = $data->results->seven_day_forecast;
             </div>
         <br>
         <br>
+        <?php
+                if(isset($_SESSION["rut_persona"])){
+                  $consulta = "SELECT ultima_conexion FROM cuenta WHERE cuenta.rut_persona=$rut";
+                    $resultado = mysqli_query($conexion,$consulta);
+                    while($row=mysqli_fetch_assoc($resultado)){
+                        $info=$row['ultima_conexion'];
+                        echo "ULTIMA CONEXIÓN:<br>".$info;
+                    }
+                }
+                    
+                ?>
     </div>
 </body>
 </html>
