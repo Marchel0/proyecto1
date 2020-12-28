@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2020 a las 00:56:38
+-- Tiempo de generación: 28-12-2020 a las 02:09:44
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -44,10 +44,11 @@ CREATE TABLE `cuenta` (
 --
 
 INSERT INTO `cuenta` (`rut_persona`, `clave`, `correo`, `telefono`, `direccion`, `fecha_nacimiento`, `tipo_cuenta`, `codigo_qr`, `ultima_conexion`) VALUES
-(112223334, '81dc9bdb52d04dc20036dbd8313ed055', 'correo@correo.cl', 12345678, 'calle 1', '2020-11-28', 'administrador', '1', '2020-12-16 00:22:17'),
+(112223334, '81dc9bdb52d04dc20036dbd8313ed055', 'correo@correo.cl', 12345678, 'calle 1', '2020-11-28', 'administrador', '1', '2020-12-17 15:25:52'),
 (123456780, '81dc9bdb52d04dc20036dbd8313ed055', 'hola@gmail.com', 123456789, 'mi casa', '2020-12-01', 'invitado', '3', '2020-12-16 00:17:40'),
 (123456789, '81dc9bdb52d04dc20036', 'hola@gmail.com', 123456789, 'hola', '2020-12-11', 'invitado', '3', NULL),
-(556667778, '1234', 'correo@correo.cl', 12345678, 'calle 2', '2020-11-28', 'alumno', '2', NULL);
+(556667778, '1234', 'correo@correo.cl', 12345678, 'calle 2', '2020-11-28', 'alumno', '2', NULL),
+(987654321, '81dc9bdb52d04dc20036dbd8313ed055', 'hola@gmail.com', 985414042, 'hola', '2020-12-18', 'invitado', '3', '2020-12-17 15:28:24');
 
 -- --------------------------------------------------------
 
@@ -62,20 +63,25 @@ CREATE TABLE `edificio` (
   `descripcion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `aforo_permitido` int(3) NOT NULL,
   `fecha_ingreso` datetime NOT NULL DEFAULT current_timestamp(),
-  `fecha_modificacion` datetime DEFAULT NULL
+  `fecha_modificacion` datetime DEFAULT NULL,
+  `latitud` float NOT NULL,
+  `longitud` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `edificio`
 --
 
-INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `descripcion`, `aforo_permitido`, `fecha_ingreso`, `fecha_modificacion`) VALUES
-(2, 'Ezzati', 100, '', 20, '0000-00-00 00:00:00', NULL),
-(12, 'Ruca del Felipe', 100, '', 20, '0000-00-00 00:00:00', NULL),
-(14, 'PRUEBA', 10, '', 20, '2020-12-14 17:02:29', NULL),
-(15, 'San Agustin', 100, '', 20, '0000-00-00 00:00:00', NULL),
-(16, 'Central', 100, '', 20, '0000-00-00 00:00:00', NULL),
-(18, 'Central 2', 100, '', 20, '2020-12-14 17:02:16', '2020-12-14 20:46:54');
+INSERT INTO `edificio` (`id_edificio`, `nombre_edificio`, `aforo_total`, `descripcion`, `aforo_permitido`, `fecha_ingreso`, `fecha_modificacion`, `latitud`, `longitud`) VALUES
+(14, 'PRUEBA', 10, '', 20, '2020-12-14 17:02:29', NULL, 0, 0),
+(20, 'Escuela de periodismo', 1000, '', 20, '2020-12-27 21:10:34', NULL, 0, 0),
+(21, 'Facultad de ciencias', 1000, '', 20, '2020-12-27 21:12:34', NULL, 0, 0),
+(22, 'Facultad de ciencias económica', 1000, '', 20, '2020-12-27 21:12:34', NULL, 0, 0),
+(23, 'Facultad de educación', 1000, '', 20, '2020-12-27 21:13:50', NULL, 0, 0),
+(24, 'Facultad de ingeniería', 1000, '', 20, '2020-12-27 21:13:50', NULL, 0, 0),
+(25, 'Facultad de medicina', 1000, '', 20, '2020-12-27 21:15:09', NULL, 0, 0),
+(26, 'Instituto de Teología', 1000, '', 20, '2020-12-27 21:15:09', NULL, 0, 0),
+(27, 'Kinesiología ', 1000, '', 20, '2020-12-27 21:15:26', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -99,13 +105,6 @@ CREATE TABLE `oficina` (
   `id_edificio` int(11) NOT NULL,
   `rut_persona` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `oficina`
---
-
-INSERT INTO `oficina` (`id_oficina`, `id_edificio`, `rut_persona`) VALUES
-(1, 2, 112223334);
 
 -- --------------------------------------------------------
 
@@ -165,7 +164,8 @@ INSERT INTO `persona` (`rut_persona`, `nombre_persona`) VALUES
 (112223334, 'Juan Perez'),
 (123456780, 'Jean Perez'),
 (123456789, 'hola'),
-(556667778, 'Rodolfo Rodriguez');
+(556667778, 'Rodolfo Rodriguez'),
+(987654321, 'carlos');
 
 -- --------------------------------------------------------
 
@@ -271,7 +271,7 @@ ALTER TABLE `personal_requerido`
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_edificio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `oficina`
