@@ -39,7 +39,8 @@
                     <input type="text" placeholder= "direccion" name = "direccion" style="width : 71%; height : 30px" required />    
                     <br>
                     <br>
-                    <input type="date" placeholder= "Fecha nacimiento" name = "fecha_nacimiento" style="width : 71%; height : 30px" required />    
+                    <p>Fecha Nacimiento:</p>
+                    <input type="date" name = "fecha_nacimiento" style="width : 71%; height : 30px" required />    
                     <br>
                     <br>
                     <br>

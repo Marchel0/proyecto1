@@ -23,7 +23,9 @@
     $query = "INSERT INTO cuenta (rut_persona, clave, correo,telefono, direccion, fecha_nacimiento, tipo_cuenta, codigo_qr) VALUES ('$rut_persona', '".md5($clave)."', '$correo', '$telefono', '$direccion', '$fecha_nacimiento', '$tipo_cuenta', '$codigo_qr')";
     $result = mysqli_query($conexion,$query);
     if($result){
-        header("Location: login.php");
+        header("Location: confirmacion_creacion_cuenta.php");
+    }else{
+        header("Location: cuenta_existente.php");
     }   
     }else{
         header("Location: login.php");
