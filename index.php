@@ -70,7 +70,7 @@ $forecast = $data->results->seven_day_forecast;
         </div>
         <ol class="nav-links">    
             <button type="submit" class="boton_ingresar" onclick="window.location.href='php/login.php'">Login</button>
-            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/registro.php'" >registrar invitado</button>
+            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/registro.php'" >Registrar invitado</button>
         </ol>
     </nav>
     <div class="contenedor">

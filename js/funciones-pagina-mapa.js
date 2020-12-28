@@ -1,27 +1,34 @@
 $(document).ready( function () {
 
-    // informacionUsuario();
-    // function informacionUsuario(){
-    //     let rut_persona = $('#rut_persona').val();
-    //     $.ajax({
-    //         url: "../php/informacion_cuenta.php",
-    //         data: { rut_persona },
-    //         type: "POST",
-    //         success: function(response){
-    //             let datosCuenta = JSON.parse(response);
-    //             let template2 = '';
+    informacionUsuario();
+    function informacionUsuario(){
+        let rut_persona = $('#rut_persona').val();
+        if(rut_persona != null){
+        $.ajax({
+            url: "../php/informacion_cuenta.php",
+            data: { rut_persona },
+            type: "POST",
+            success: function(response){
+                let datosCuenta = JSON.parse(response);
+                let template2 = '';
     
-    //             datosCuenta.forEach(datosCuenta => {
-    //                 template2 += 
-    //                 `<li><a href = 'perfil.php'>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</a></li><br>
-    //                 <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesion</button>`
-    //             });
+                datosCuenta.forEach(datosCuenta => {
+                    template2 += 
+                    `<li><a href = 'perfil.php'>${datosCuenta.nombre}/${datosCuenta.tipo_cuenta}</a></li><br>
+                    <button type="submit" class="boton_ingresar" onclick="window.location.href='logout.php'">Cerrar sesion</button>`
+                });
     
-    //             $('#nav-info').html(template2);
+                $('#nav-info').html(template2);
                 
-    //         }
-    //     });
-    //}    
+            }
+        });
+        }else{
+            
+            $('#nav-info').html(`<button type="submit" class="boton_ingresar" onclick="window.location.href='login.php'">Login</button>
+            <button type="submit" class="boton_ingresar" onclick="window.location.href='registro.php'">Registrar invitado</button>`
+            );
+        }
+    }    
 
 });
 

@@ -73,6 +73,7 @@ $forecast = $data->results->seven_day_forecast;
                 <li class="nav-menu-li"><a href="../index.php" class="boton-menu">Home</a></li>
                 <li class="nav-menu-li"><a href="contacto.php" class="boton-menu">Contacto</a></li>
                 <li class="nav-menu-li"><a href="noticias.php" class="boton-menu">Noticias</a></li>
+                <li class="nav-menu-li"><a href="mapa.php" class="boton-menu">Mapa</a></li>
             </ul>
         </div>
         <ol class="nav-links" id="nav-info"> 

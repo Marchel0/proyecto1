@@ -1,5 +1,10 @@
 <?php
     require("conexion.php");
+    session_start();
+    if(isset($_SESSION["rut_persona"])){
+        $rut= $_SESSION['rut_persona'];
+    }
+    
 ?>
 <?php
 $cache_file = 'data.json';
@@ -52,9 +57,14 @@ $forecast = $data->results->seven_day_forecast;
       defer
     ></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
+    <script type="text/javascript" src="../js/funciones-pagina-mapa.js"></script>
 </head>
 <body id="prueba">
     <nav class="nav">
+        <?php  
+            if(isset($_SESSION["rut_persona"])){
+                echo "<input type='hidden' id='rut_persona' value='$rut'>";
+            }?>
         <div class="nav-brand">
             <ul class="nav-menu-ul">
                 <li class="nav-menu-li"><img src="../Imagenes/ucsc.png" alt=""></li>
@@ -64,9 +74,8 @@ $forecast = $data->results->seven_day_forecast;
                 <li class="nav-menu-li"><a href="mapa.php" class="boton-menu">Mapa</a></li>
             </ul>
         </div>
-        <ol class="nav-links">    
-            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/login.php'">Login</button>
-            <button type="submit" class="boton_ingresar" onclick="window.location.href='php/registro.php'" >registrar invitado</button>
+        <ol class="nav-links" id="nav-info">    
+            
         </ol>
     </nav>
     <div class="contenedor">
@@ -116,7 +125,6 @@ $forecast = $data->results->seven_day_forecast;
             </div>
         <br>
         <br>
-    </div>
-    <script type="text/javascript" src="../js/funciones-pagina-mapa.js"></script> 
+    </div> 
 </body>
 </html>
